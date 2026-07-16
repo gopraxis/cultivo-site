@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cultivo | Seed-to-sale software built around your operation</title>
+<meta name="description" content="Cultivo is seed-to-sale software fitted to your cultivation facility, with an intelligence layer on top that reads your whole ledger and reports to you before you ask. A Praxis product." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1219'/%3E%3Crect x='6' y='8' width='16' height='3.5' rx='1.2' fill='%23e8e2d4' opacity='.95'/%3E%3Crect x='6' y='14.5' width='11' height='3.5' rx='1.2' fill='%23e8e2d4' opacity='.55'/%3E%3Crect x='6' y='21' width='13' height='3.5' rx='1.2' fill='none' stroke='%23e8e2d4' stroke-opacity='.45'/%3E%3Crect x='23.5' y='5' width='1.6' height='22' fill='%23c8433a'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ground: #0b1219;
+    --surface: #0e161f;
+    --surface-2: #101922;
+    --ink: #e8e2d4;
+    --ink-2: rgba(232, 226, 212, 0.58);
+    --ink-3: rgba(232, 226, 212, 0.4);
+    --line: rgba(232, 226, 212, 0.13);
+    --line-strong: rgba(232, 226, 212, 0.24);
+    --gold: #c9a24b;
+    --red: #c8433a;
+    --amber: #d9a15a;
+    --olive: #7fa98c;
+    --display: 'Big Shoulders Display', sans-serif;
+    --body: 'IBM Plex Sans', sans-serif;
+    --measure: 62ch;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background:
+      radial-gradient(1100px 460px at 16% -8%, rgba(200, 67, 58, 0.055), transparent 60%),
+      radial-gradient(900px 520px at 92% 12%, rgba(201, 162, 75, 0.04), transparent 55%),
+      var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+  /* ── caps label grammar ─────────────────────────────── */
+  .kicker {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .kicker.dim { color: var(--ink-3); }
+
+  /* ── top bar ────────────────────────────────────────── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11, 18, 25, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+  .wordmark {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.34em;
+    color: var(--ink);
+    text-decoration: none;
+    line-height: 1;
+  }
+  .wordmark span { color: var(--red); }
+  .bar-right { display: flex; align-items: center; gap: 22px; }
+  .praxis-tag {
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .btn {
+    display: inline-block;
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    padding: 11px 22px;
+    border-radius: 3px;
+    transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  }
+  .btn-red {
+    background: var(--red);
+    color: #fdf8ee;
+    border: 1px solid var(--red);
+  }
+  .btn-red:hover { background: #d54e44; transform: translateY(-1px); }
+  .btn-ghost {
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+    background: transparent;
+  }
+  .btn-ghost:hover { border-color: var(--ink-2); transform: translateY(-1px); }
+  .btn-small { padding: 8px 16px; font-size: 12.5px; }
+
+  /* ── hero ───────────────────────────────────────────── */
+  .hero { padding: 92px 0 46px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 10fr) minmax(0, 9fr);
+    gap: 56px;
+    align-items: center;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(52px, 6.4vw, 86px);
+    line-height: 0.98;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    margin: 18px 0 22px;
+  }
+  h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 17.5px;
+    color: var(--ink-2);
+    max-width: 54ch;
+    margin-bottom: 30px;
+  }
+  .hero-sub strong { color: var(--ink); font-weight: 500; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .hero-proof {
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+    max-width: 48ch;
+  }
+  .hero-proof b { color: var(--ink-2); font-weight: 500; }
+
+  /* ── the instrument board ───────────────────────────── */
+  .board {
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 22px 22px 16px;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  }
+  .board-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  .board-head .kicker.dim { letter-spacing: 0.2em; }
+  .board-rows { position: relative; padding: 6px 0 4px; }
+
+  .b-row {
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    align-items: center;
+    gap: 14px;
+    padding: 9px 0;
+  }
+  .b-code {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+  .b-track { position: relative; height: 26px; }
+
+  .b-bar {
+    position: absolute;
+    top: 0;
+    height: 26px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transform-origin: left center;
+    animation: barIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .b-bar.active {
+    background: rgba(232, 226, 212, 0.93);
+    color: #101922;
+    animation-delay: 0.15s;
+  }
+  .b-bar.committed {
+    background: rgba(232, 226, 212, 0.42);
+    color: #0b1219;
+    animation-delay: 0.3s;
+  }
+  .b-bar.committed.two { animation-delay: 0.45s; }
+  .b-bar.draft {
+    background: transparent;
+    border: 1px dashed var(--line-strong);
+    color: var(--ink-3);
+    animation-delay: 0.6s;
+  }
+  .b-void {
+    position: absolute;
+    top: 0;
+    height: 26px;
+    border: 1px dashed rgba(232, 226, 212, 0.18);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 1s 0.9s both;
+  }
+  .b-void span {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--ink-3);
+  }
+
+  @keyframes barIn {
+    from { transform: scaleX(0); opacity: 0; }
+    to { transform: scaleX(1); opacity: 1; }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* red-pencil correction */
+  .b-correction {
+    position: absolute;
+    top: -15px;
+    left: 46%;
+    display: flex;
+    gap: 7px;
+    align-items: baseline;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    animation: fadeIn 0.8s 1.25s both;
+  }
+  .b-correction .struck {
+    color: var(--ink-3);
+    text-decoration: line-through;
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 1.5px;
+  }
+  .b-correction .fix { color: var(--red); font-weight: 600; }
+  .b-correction .why { color: var(--red); font-style: italic; opacity: 0.85; }
+
+  /* today hairline */
+  .today-line {
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    left: 58%;
+    width: 1.5px;
+    background: var(--red);
+    animation: fadeIn 1s 1s both;
+  }
+  .today-line::after {
+    content: 'TODAY';
+    position: absolute;
+    top: -6px;
+    left: 6px;
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--red);
+  }
+
+  .board-kpis {
+    display: flex;
+    gap: 28px;
+    margin-top: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .bk {
+    display: grid;
+    gap: 2px;
+  }
+  .bk small {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .bk strong {
+    font-size: 16px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+  .bk strong i { font-style: normal; color: var(--amber); }
+
+  /* ── sections ───────────────────────────────────────── */
+  section { padding: 84px 0; }
+  .rule-top { border-top: 1px solid var(--line); }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(36px, 4.2vw, 56px);
+    line-height: 1.02;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin: 14px 0 20px;
+    max-width: 22ch;
+  }
+  .lede {
+    font-size: 17px;
+    color: var(--ink-2);
+    max-width: var(--measure);
+  }
+  .lede + .lede { margin-top: 16px; }
+  .lede strong { color: var(--ink); font-weight: 500; }
+
+  /* problem beats */
+  .beats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 44px;
+  }
+  .beat {
+    background: var(--surface);
+    padding: 26px 24px 28px;
+  }
+  .beat .num {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    color: var(--ink-3);
+  }
+  .beat h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0 8px;
+    letter-spacing: 0.01em;
+  }
+  .beat p { font-size: 14px; color: var(--ink-2); }
+  .beat.hot h3 { color: var(--amber); }
+
+  /* layers */
+  .layers { display: grid; gap: 18px; margin-top: 48px; }
+  .layer {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 30px;
+    padding: 34px 32px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .layer:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+  .layer-no {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--ink-3);
+  }
+  .layer h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 27px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .layer p { color: var(--ink-2); max-width: 68ch; font-size: 15.5px; }
+  .tag {
+    font-family: var(--body);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 10px 4px;
+    border-radius: 999px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    line-height: 1;
+  }
+  .layer.feature {
+    border-color: rgba(201, 162, 75, 0.45);
+    background: linear-gradient(180deg, rgba(201, 162, 75, 0.05), transparent 55%), var(--surface);
+  }
+  .layer.feature .layer-no { color: var(--gold); }
+
+  /* manifesto */
+  .manifesto {
+    max-width: 880px;
+  }
+  .manifesto p {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(26px, 3.2vw, 40px);
+    line-height: 1.18;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .manifesto p b { color: var(--ink); font-weight: 600; }
+  .manifesto p i { font-style: normal; color: var(--red); }
+  .manifesto-body {
+    margin-top: 26px;
+    font-size: 16.5px;
+    color: var(--ink-2);
+    max-width: var(--measure);
+  }
+  .manifesto-body strong { color: var(--ink); font-weight: 500; }
+
+  /* intelligence deliverables */
+  .arrives {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 44px;
+  }
+  .arrive {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    padding: 20px 22px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+  }
+  .arrive .when {
+    flex-shrink: 0;
+    width: 92px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .arrive div h4 { font-size: 15.5px; font-weight: 600; margin-bottom: 4px; }
+  .arrive div p { font-size: 13.5px; color: var(--ink-2); }
+
+  /* how we work */
+  .steps {
+    counter-reset: step;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+    margin: 46px 0 56px;
+  }
+  .step { position: relative; padding-top: 20px; border-top: 1px solid var(--line-strong); }
+  .step::before {
+    counter-increment: step;
+    content: '0' counter(step);
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .step h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .step p { font-size: 14.5px; color: var(--ink-2); }
+
+  .fees {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .fee { background: var(--surface); padding: 30px 28px 32px; }
+  .fee.spot {
+    background: linear-gradient(180deg, rgba(201, 162, 75, 0.06), transparent 60%), var(--surface);
+  }
+  .fee .kicker { display: block; margin-bottom: 14px; }
+  .fee h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 25px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .fee p { font-size: 14px; color: var(--ink-2); }
+  .fee .basis {
+    display: block;
+    margin-top: 16px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .fit-note {
+    margin-top: 26px;
+    font-size: 14.5px;
+    color: var(--ink-3);
+    max-width: 62ch;
+  }
+  .fit-note b { color: var(--ink-2); font-weight: 500; }
+
+  /* closing cta */
+  .closing {
+    text-align: left;
+    padding: 100px 0 110px;
+  }
+  .closing h2 { max-width: 26ch; }
+  .closing .lede { margin-bottom: 34px; }
+  .slots {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 26px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .slots::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--olive);
+    box-shadow: 0 0 0 0 rgba(127, 169, 140, 0.5);
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(127, 169, 140, 0.45); }
+    70% { box-shadow: 0 0 0 9px rgba(127, 169, 140, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(127, 169, 140, 0); }
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 34px 0 42px;
+  }
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 12.5px;
+    color: var(--ink-3);
+  }
+  .foot a { color: var(--ink-2); text-decoration: none; }
+  .foot a:hover { color: var(--ink); }
+  .foot .wordmark { font-size: 17px; }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ── responsive ─────────────────────────────────────── */
+  @media (max-width: 980px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+    .layers .layer { grid-template-columns: 1fr; gap: 10px; padding: 28px 24px; }
+    .layer-no { font-size: 40px; }
+  }
+  @media (max-width: 760px) {
+    .hero { padding: 64px 0 30px; }
+    .beats, .steps, .fees, .arrives { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+    .praxis-tag { display: none; }
+    .arrive .when { width: 74px; }
+    .board { padding: 18px 14px 12px; }
+    .board-kpis { gap: 18px; flex-wrap: wrap; }
+    .wrap { padding: 0 20px; }
+    .wordmark { font-size: 19px; letter-spacing: 0.22em; }
+    .bar .btn-small { padding: 8px 12px; font-size: 11.5px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="wordmark" href="#top">CULTIVO<span>.</span></a>
+    <div class="bar-right">
+      <span class="praxis-tag">A Praxis product</span>
+      <a class="btn btn-red btn-small" href="mailto:justin@gopraxis.ai?subject=Cultivo%20walkthrough">Request a walkthrough</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">Seed to sale, fitted to your facility</span>
+        <h1>Software that runs the way <em>your grow</em> runs.</h1>
+        <p class="hero-sub">
+          Cultivo is the operational record for owner-run cultivation: planning,
+          production, inventory, and orders shaped to your rooms, your roles, and
+          your workflow. On top of it sits an <strong>intelligence layer</strong> that reads
+          the whole ledger and reports to you before you ask.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-red" href="mailto:justin@gopraxis.ai?subject=Cultivo%20walkthrough">Request a walkthrough</a>
+          <a class="btn btn-ghost" href="#system">See the system</a>
+        </div>
+        <p class="hero-proof">
+          <b>Born on a production floor, not a whiteboard.</b> Built and hardened
+          inside a working Arizona cultivation facility, in daily use since 2025.
+        </p>
+      </div>
+
+      <!-- the instrument -->
+      <div class="board" aria-label="Illustration of the Cultivo production planner board">
+        <div class="board-head">
+          <span class="kicker dim">Production &middot; Flower</span>
+          <span class="kicker dim">Window: 16 weeks</span>
+        </div>
+        <div class="board-rows">
+          <div class="today-line"></div>
+          <div class="b-row">
+            <span class="b-code">FLW-01</span>
+            <div class="b-track"><div class="b-bar active" style="left:2%; width:53%;">260315 &middot; Glue</div></div>
+          </div>
+          <div class="b-row">
+            <span class="b-code">FLW-02</span>
+            <div class="b-track"><div class="b-bar committed" style="left:18%; width:56%;">260402 &middot; Paloma</div></div>
+          </div>
+          <div class="b-row">
+            <span class="b-code">FLW-03</span>
+            <div class="b-track">
+              <div class="b-correction"><span class="struck">May 13</span><span class="fix">May 20</span><span class="why">IPM hold &middot; +7d</span></div>
+              <div class="b-bar committed two" style="left:34%; width:54%;">260428 &middot; Romance</div>
+            </div>
+          </div>
+          <div class="b-row">
+            <span class="b-code">FLW-04</span>
+            <div class="b-track"><div class="b-bar draft" style="left:52%; width:42%;">Draft &middot; Snowcone</div></div>
+          </div>
+          <div class="b-row">
+            <span class="b-code">FLW-05</span>
+            <div class="b-track"><div class="b-void" style="left:64%; width:32%;"><span>+ Plan &middot; Jun 02</span></div></div>
+          </div>
+        </div>
+        <div class="board-kpis">
+          <div class="bk"><small>Canopy</small><strong>82%</strong></div>
+          <div class="bk"><small>Cycles live</small><strong>9</strong></div>
+          <div class="bk"><small>Schedule drift</small><strong><i>+3.2d</i></strong></div>
+          <div class="bk"><small>Cuts due</small><strong>240</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROBLEM ═══ -->
+  <section class="rule-top">
+    <div class="wrap">
+      <span class="kicker reveal">The problem</span>
+      <h2 class="reveal">The plan lives in someone's head.</h2>
+      <p class="lede reveal">
+        Most grows plan in a spreadsheet, on a whiteboard, or in the head grower's
+        memory. And planning is the easy part. <strong>The damage happens when the
+        schedule moves.</strong>
+      </p>
+      <div class="beats">
+        <div class="beat reveal">
+          <span class="num">FIG. 01</span>
+          <h3>A room flips a week late</h3>
+          <p>One IPM hold, one slow strain, one crew short-week. Small on its own. Never small downstream.</p>
+        </div>
+        <div class="beat reveal">
+          <span class="num">FIG. 02</span>
+          <h3>Nobody downstream hears</h3>
+          <p>The nursery keeps cutting to the old date. Post-production staffs for a harvest that isn't coming. The gap compounds in silence.</p>
+        </div>
+        <div class="beat hot reveal">
+          <span class="num">FIG. 03</span>
+          <h3>Nobody can reconstruct why</h3>
+          <p>Three months later the numbers are short and the answer is a shrug. The record of what changed, when, and why is the most valuable data your facility produces. Almost nobody keeps it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ THE SYSTEM ═══ -->
+  <section class="rule-top" id="system">
+    <div class="wrap">
+      <span class="kicker reveal">What Cultivo is</span>
+      <h2 class="reveal">One system. Three layers.</h2>
+      <div class="layers">
+        <div class="layer reveal">
+          <span class="layer-no">01</span>
+          <div>
+            <h3>The record</h3>
+            <p>
+              Cultivation, post-production, inventory, and orders on one operational
+              ledger, from clone to invoice. We fit it to your facility during
+              implementation, not the other way around: your rooms, your strains,
+              your grades, your SOPs. It becomes the system of record for how
+              material actually moves, and the crew stops working around the software.
+            </p>
+          </div>
+        </div>
+        <div class="layer reveal">
+          <span class="layer-no">02</span>
+          <div>
+            <h3>The planner</h3>
+            <p>
+              Plan cycles against real room capacity, months out. When a date moves,
+              Cultivo shows the downstream ripple before you commit it, keeps plan
+              against actual, and writes every change to a ledger anyone can read
+              later. "What happened in March" becomes a thirty-second answer instead
+              of an argument.
+            </p>
+          </div>
+        </div>
+        <div class="layer feature reveal">
+          <span class="layer-no">03</span>
+          <div>
+            <h3>The intelligence layer <span class="tag">The subscription</span></h3>
+            <p>
+              An operator agent with your whole ledger in its head. It lives where
+              your team already works and answers anything about the operation. More
+              importantly, it does not wait to be asked: it briefs you weekly, flags
+              variance and loss as they form, and hands your investors a clean
+              picture monthly. It compounds on your own data, which means it gets
+              sharper every month you run on it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MANIFESTO ═══ -->
+  <section class="rule-top">
+    <div class="wrap manifesto">
+      <span class="kicker reveal">Why it's different</span>
+      <p class="reveal" style="margin-top:14px;">
+        Seed-to-sale software has meant the same thing for a decade: <b>a compliance
+        checklist with screens,</b> built to satisfy a regulator and fought by every
+        person who touches it. Cultivo was built <i>the other way around.</i>
+      </p>
+      <p class="manifesto-body reveal">
+        It started inside a working facility and got shaped by daily production
+        until it fit. <strong>Compliance falls out of a truthful ledger.</strong> It is not the
+        product. The way your facility runs is the product.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ INTELLIGENCE DETAIL ═══ -->
+  <section class="rule-top">
+    <div class="wrap">
+      <span class="kicker reveal">The intelligence layer</span>
+      <h2 class="reveal">It doesn't wait to be asked.</h2>
+      <p class="lede reveal">
+        Chat boxes that wait for visitors die quietly. Cultivo's intelligence layer
+        is built to <strong>arrive</strong>: on a cadence, in the tools your team already lives in,
+        grounded in your ledger and nothing else.
+      </p>
+      <div class="arrives">
+        <div class="arrive reveal">
+          <span class="when">Weekly</span>
+          <div>
+            <h4>The operations brief</h4>
+            <p>What moved, what drifted, what it cost, what needs a decision. Written from the ledger, not from memory.</p>
+          </div>
+        </div>
+        <div class="arrive reveal">
+          <span class="when">Live</span>
+          <div>
+            <h4>Variance and loss watchdogs</h4>
+            <p>Mass balance, yield variance, stuck sessions, and schedule drift flagged as they form, not at year end.</p>
+          </div>
+        </div>
+        <div class="arrive reveal">
+          <span class="when">Monthly</span>
+          <div>
+            <h4>The investor pack</h4>
+            <p>A clean, honest picture of the operation your investors can read in five minutes. No scramble, no spin.</p>
+          </div>
+        </div>
+        <div class="arrive reveal">
+          <span class="when">Anytime</span>
+          <div>
+            <h4>Ask the operation anything</h4>
+            <p>An agent in your Slack with the whole ledger in its head. "How many pounds of Glue are sellable right now" gets a real answer with receipts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW WE WORK ═══ -->
+  <section class="rule-top">
+    <div class="wrap">
+      <span class="kicker reveal">How we work</span>
+      <h2 class="reveal">Fitted, not installed.</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <h3>We map your facility</h3>
+          <p>Rooms, strains, roles, cadence, and the way work actually happens on your floor. Not a form you fill out. A walk we take together.</p>
+        </div>
+        <div class="step reveal">
+          <h3>We stand up your ledger</h3>
+          <p>Your record fitted and live, your crew trained on the floor, your history where it belongs. Weeks, not quarters.</p>
+        </div>
+        <div class="step reveal">
+          <h3>We turn on the layer</h3>
+          <p>The agent, the brief, the watchdogs, the investor pack. The part that compounds, and the part you'll keep.</p>
+        </div>
+      </div>
+      <div class="fees">
+        <div class="fee reveal">
+          <span class="kicker dim">One-time</span>
+          <h3>Implementation</h3>
+          <p>A scoped fitting project: mapping, configuration, data standup, and crew training, done by the people who built the system.</p>
+          <span class="basis">Scoped per facility</span>
+        </div>
+        <div class="fee reveal">
+          <span class="kicker dim">Monthly</span>
+          <h3>Platform</h3>
+          <p>The operational record: planner, production, inventory, and orders. Priced to be the easiest line item on your P&amp;L.</p>
+          <span class="basis">Per facility</span>
+        </div>
+        <div class="fee spot reveal">
+          <span class="kicker">Monthly</span>
+          <h3>Intelligence</h3>
+          <p>The brief, the watchdogs, the investor pack, the agent. Priced against the analyst you won't need to hire, not against software.</p>
+          <span class="basis">Per facility &middot; cancel anytime</span>
+        </div>
+      </div>
+      <p class="fit-note reveal">
+        <b>We fit Cultivo to two facilities at a time.</b> That's not scarcity theater;
+        fitting is real work and we do it ourselves. Design partners get
+        founder-level attention and pricing that reflects the partnership.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ CLOSING CTA ═══ -->
+  <section class="rule-top closing">
+    <div class="wrap">
+      <span class="slots reveal">Two design partner slots open</span>
+      <h2 class="reveal">If the plan lives in a head or a spreadsheet, we should talk.</h2>
+      <p class="lede reveal">
+        A walkthrough takes twenty minutes and runs on real production data, not a
+        slide deck. If it's not a fit, you'll know fast, and you'll leave with a
+        sharper picture of your own operation either way.
+      </p>
+      <a class="btn btn-red reveal" href="mailto:justin@gopraxis.ai?subject=Cultivo%20walkthrough">Request a walkthrough</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="wordmark">CULTIVO<span style="color:var(--red)">.</span></span>
+    <span>A <a href="https://gopraxis.ai">Praxis</a> product &middot; Built in Arizona</span>
+    <a href="mailto:justin@gopraxis.ai">justin@gopraxis.ai</a>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+
+</body>
+</html>
