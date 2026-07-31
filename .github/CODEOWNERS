@@ -1,0 +1,5 @@
+# Every change to the Cultivo landing page is reviewed by Justin.
+# This routes review automatically; the branch ruleset "protect-main"
+# is what actually enforces it.
+
+*   @jedwardmorrow-blip
