@@ -34,8 +34,8 @@
   <p class="sub">Farm machinery for the information layer: <b>the plan, the record, and the reconciliation between them.</b></p>
   <p class="subsub">An always-on agent keeps the books honest one plain yes/no question at a time, asked in Slack or WhatsApp, so the schedule ripples, records, and reports itself while your crew keeps working.</p>
   <div class="ctas">
-    <a class="cta" href="#machine-sec">See the machine run</a>
-    <a class="cta ghost" href="mailto:justin@gopraxis.ai?subject=Cultivo%20pilot">Book a pilot</a>
+    <a class="cta" href="#roi">Calculate the cost of drift</a>
+    <a class="cta ghost" href="#machine-sec">See the machine run</a>
   </div>
   <div class="heroplate">
     <div class="hp-head">Data plate <i></i></div>
@@ -47,6 +47,161 @@
     <div class="hp-row"><span>Built by</span><span>Praxis</span></div>
   </div>
 </div>
+
+<!-- ============ ROI CALCULATOR ============ -->
+<section class="paper roi-section" id="roi"><div class="shell">
+  <div class="sec-head"><span class="figno">Cultivo value engine</span><h2>Put a number on drift</h2><span class="side">instrument CV.I · continuous reading</span></div>
+  <p class="lede">The plan says one thing. The floor does another. The ledger finds out later. Read what it is worth to keep all three true—with cash savings, working capacity and operational upside kept on separate gauges.</p>
+
+  <div class="roi-machine">
+    <span class="m-corner tl"></span><span class="m-corner tr"></span><span class="m-corner bl"></span><span class="m-corner br"></span>
+    <div class="roi-machine-head">
+      <div><span class="roi-brand">Cultivo</span><span class="roi-eyebrow">Machine-age agriculture · value instrument</span><h3>The economics of staying true</h3></div>
+      <div class="roi-duty"><i></i><span>Model live</span></div>
+    </div>
+    <div class="roi-cycle-rail"><span>Intent</span><i>→</i><span>Execution</span><i>→</i><span>Outcome</span><b>Every decision becomes a record</b></div>
+
+    <form id="roiCalc" class="roi-layout">
+      <div class="roi-controls">
+        <fieldset class="roi-panel roi-presets">
+          <legend>01 · Facility pattern</legend>
+          <p class="roi-help">Start with a pattern, then replace every assumption with your own.</p>
+          <div class="roi-preset-row" role="group" aria-label="Facility size presets">
+            <button type="button" class="roi-preset" data-roi-preset="lean">Lean</button>
+            <button type="button" class="roi-preset is-active" data-roi-preset="mid">Multi-room</button>
+            <button type="button" class="roi-preset" data-roi-preset="large">Multi-site</button>
+          </div>
+          <div class="roi-input-grid roi-input-grid--3">
+            <label><span>Annual finished-product revenue</span><span class="roi-money"><b>$</b><input id="roiRevenue" name="annualRevenue" type="number" min="0" step="100000" value="4000000"></span></label>
+            <label><span>Contribution margin</span><span class="roi-suffix"><input id="roiMargin" name="contributionMargin" type="number" min="0" max="100" step="1" value="60"><b>%</b></span></label>
+            <label><span>Operating weeks / year</span><input id="roiWeeks" name="operatingWeeks" type="number" min="1" max="52" step="1" value="52"></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="roi-panel">
+          <legend>02 · Work the machine can return</legend>
+          <p class="roi-help">Enter time currently spent chasing status, reconciling records, re-keying work and rebuilding the plan.</p>
+          <div class="roi-role-table">
+            <div class="roi-role-head"><span>Role</span><span>People</span><span>Work / person</span><span>Loaded rate</span></div>
+            <div class="roi-role-row">
+              <span><b>Cultivation techs</b><small>minutes / workday</small></span>
+              <label><span class="sr-only">Cultivation technicians</span><input id="roiTechs" type="number" min="0" step="1" value="12"></label>
+              <label><span class="sr-only">Technician minutes per workday</span><input id="roiTechMins" type="number" min="0" max="480" step="5" value="15"></label>
+              <label><span class="sr-only">Technician loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiTechRate" type="number" min="0" step="1" value="26"></span></label>
+            </div>
+            <div class="roi-role-row">
+              <span><b>Managers</b><small>hours / week</small></span>
+              <label><span class="sr-only">Managers</span><input id="roiManagers" type="number" min="0" step="1" value="3"></label>
+              <label><span class="sr-only">Manager hours per week</span><input id="roiManagerHours" type="number" min="0" max="40" step="0.5" value="5"></label>
+              <label><span class="sr-only">Manager loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiManagerRate" type="number" min="0" step="1" value="45"></span></label>
+            </div>
+            <div class="roi-role-row">
+              <span><b>Admin + inventory</b><small>hours / week</small></span>
+              <label><span class="sr-only">Administrative and inventory staff</span><input id="roiAdmins" type="number" min="0" step="1" value="2"></label>
+              <label><span class="sr-only">Administrative hours per week</span><input id="roiAdminHours" type="number" min="0" max="40" step="0.5" value="4"></label>
+              <label><span class="sr-only">Administrative loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiAdminRate" type="number" min="0" step="1" value="35"></span></label>
+            </div>
+            <div class="roi-role-row">
+              <span><b>Owner / senior lead</b><small>hours / week</small></span>
+              <label><span class="sr-only">Owners or senior leaders</span><input id="roiLeads" type="number" min="0" step="1" value="1"></label>
+              <label><span class="sr-only">Senior leader hours per week</span><input id="roiLeadHours" type="number" min="0" max="40" step="0.5" value="3"></label>
+              <label><span class="sr-only">Senior leader loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiLeadRate" type="number" min="0" step="1" value="65"></span></label>
+            </div>
+          </div>
+          <details class="roi-formula">
+            <summary>How labor is calculated</summary>
+            <p>Technicians: people × minutes per workday × five days × operating weeks × loaded rate. Weekly roles: people × hours per week × operating weeks × loaded rate. Cultivo's capture rate is applied once; only the redeployed share enters modeled annual value.</p>
+          </details>
+
+          <div class="roi-slider-grid">
+            <label class="roi-slider"><span><b>Workload Cultivo captures</b><output id="roiCaptureReadout" for="roiCapture">60%</output></span><input id="roiCapture" type="range" min="0" max="100" step="5" value="60"><small>Core defaults to 35%; governed agent workflows increase the portion that can happen without opening another system.</small></label>
+            <label class="roi-slider"><span><b>Released time productively redeployed</b><output id="roiRedeployReadout" for="roiRedeploy">75%</output></span><input id="roiRedeploy" type="range" min="0" max="100" step="5" value="75"><small>The remainder stays visible as capacity, but is not included in modeled annual value.</small></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="roi-panel">
+          <legend>03 · Leakage, risk and upside</legend>
+          <div class="roi-input-grid">
+            <label><span>Overtime / contractors removed annually</span><span class="roi-money"><b>$</b><input id="roiOvertime" type="number" min="0" step="1000" value="0"></span><small>Count only spend that would actually disappear.</small></label>
+            <label><span>Annual preventable write-offs + rework</span><span class="roi-money"><b>$</b><input id="roiLosses" type="number" min="0" step="1000" value="50000"></span><small>Inventory errors, oversells, duplicate work and avoidable corrections.</small></label>
+          </div>
+          <label class="roi-slider roi-slider--single"><span><b>Leakage Cultivo can prevent</b><output id="roiLossCaptureReadout" for="roiLossCapture">60%</output></span><input id="roiLossCapture" type="range" min="0" max="100" step="5" value="60"></label>
+          <div class="roi-input-grid">
+            <label><span>Potential production / revenue recovery</span><span class="roi-suffix"><input id="roiProductionGain" type="number" min="0" max="20" step="0.1" value="1"><b>%</b></span><small>Keep at zero until the facility has a credible operational hypothesis.</small></label>
+            <label class="roi-slider"><span><b>Confidence in that upside</b><output id="roiConfidenceReadout" for="roiConfidence">50%</output></span><input id="roiConfidence" type="range" min="0" max="100" step="5" value="50"><small>Strategic upside is confidence-weighted before it enters the result.</small></label>
+          </div>
+          <div class="roi-hire">
+            <label class="roi-check"><input id="roiHireVerified" type="checkbox"><span><b>Count a documented avoided hire as hard savings</b><small>Only turn this on when the role is budgeted and independent of the released capacity above.</small></span></label>
+            <label><span>Fully loaded annual cost</span><span class="roi-money"><b>$</b><input id="roiHireCost" type="number" min="0" step="1000" value="65000"></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="roi-panel">
+          <legend>04 · Fit the powertrain</legend>
+          <p class="roi-help">Choose the operating model. Package assumptions remain editable; pricing is shown plainly.</p>
+          <div class="roi-package-grid">
+            <label class="roi-package"><input type="radio" name="roiPackage" value="core"><span><b>Core</b><em>$2,500 / mo</em><small>Planner, ledger and read-only diagnostics.</small></span></label>
+            <label class="roi-package"><input type="radio" name="roiPackage" value="operator" checked><span><b>Operator</b><em>$3,500 / mo</em><small>3–5 governed agent workflows.</small></span></label>
+            <label class="roi-package"><input type="radio" name="roiPackage" value="performance"><span><b>Performance</b><em>$6,000 / mo</em><small>Cross-functional operating program.</small></span></label>
+          </div>
+          <p class="roi-package-note">Otto's contribution lives in the workload-capture gauge—not in magic math. Need evidence first? A 90-day agentic proof is scoped at $15,000–$18,000 with baselines, event receipts and a value reading.</p>
+          <label class="roi-slider roi-slider--single"><span><b>Required benefit / cost hurdle</b><output id="roiHurdleReadout" for="roiHurdle">2.0×</output></span><input id="roiHurdle" type="range" min="1" max="5" step="0.5" value="2"></label>
+        </fieldset>
+      </div>
+
+      <aside class="roi-results" aria-live="polite">
+        <div class="roi-output-hero">
+          <span>Modeled annual value</span>
+          <output id="roiAnnualValue">$0</output>
+          <small>Hard savings + redeployed capacity + confidence-weighted upside</small>
+        </div>
+
+        <div class="roi-value-stack">
+          <div><span>Hard-dollar savings</span><output id="roiHardSavings">$0</output><small id="roiHardNote">Cash movement only</small></div>
+          <div><span>Capacity released</span><output id="roiCapacityValue">$0</output><small id="roiCapacityNote">0 hours / year</small></div>
+          <div><span>Strategic upside</span><output id="roiStrategicValue">$0</output><small id="roiStrategicNote">Confidence-weighted before inclusion</small></div>
+        </div>
+
+        <div class="roi-data-plate">
+          <div class="roi-data-head"><span id="roiPackageName">Operator</span><i></i></div>
+          <div><span>Monthly software</span><output id="roiMonthlyPrice">$3,500</output></div>
+          <div><span>Implementation</span><output id="roiImplementation">$12,000</output></div>
+          <div><span>First-year investment</span><output id="roiFirstYearCost">$54,000</output></div>
+          <div><span>First-year net value</span><output id="roiNetValue">$0</output></div>
+          <div><span>First-year ROI</span><output id="roiRoi">0%</output></div>
+          <div><span>Benefit / cost</span><output id="roiBenefitCost">0.0×</output></div>
+          <div><span>Modeled payback</span><output id="roiPayback">—</output></div>
+        </div>
+
+        <div class="roi-verdict">
+          <div class="roi-verdict-head"><span>Economic fit</span><output id="roiFitLabel">Reading model</output></div>
+          <div class="roi-meter" aria-hidden="true"><i id="roiMeterFill"></i><b id="roiMeterMark"></b></div>
+          <p id="roiVerdictText">Adjust the facility assumptions to read the model.</p>
+          <p class="roi-headroom"><span>Monthly price supported at your hurdle, after implementation</span><output id="roiHeadroom">$0</output></p>
+        </div>
+
+        <div class="roi-actions">
+          <a class="cta roi-email" id="roiEmail" href="mailto:justin@gopraxis.ai?subject=Cultivo%20ROI%20model">Send this model</a>
+          <a class="cta ghost" href="mailto:justin@gopraxis.ai?subject=Cultivo%2090-day%20proof%20pilot">Design a 90-day proof</a>
+        </div>
+        <p class="roi-disclaimer">Illustrative estimate, not a guarantee. Capacity becomes cash only when payroll, overtime or contractor spend changes—or when the time is redeployed into measured output. Avoided hire and strategic upside are excluded unless you enter and qualify them.</p>
+      </aside>
+    </form>
+
+    <div class="roi-value-map">
+      <span>Value map</span>
+      <div><b>Planner + agent</b><small>Returned coordination and reconciliation time</small><em>Capacity</em></div>
+      <div><b>Ledger + safeguards</b><small>Prevented write-offs, oversells and rework</small><em>Hard savings</em></div>
+      <div><b>Owner's ledger</b><small>Yield, throughput and harvest-to-cash improvement</small><em>Strategic upside</em></div>
+    </div>
+
+    <div class="roi-benchmark">
+      <span>Market reference</span>
+      <p>Peer cannabis operations vendors publish examples of roughly <b>125–200 staff hours per month</b> returned. This model starts from your actual roles and discounts that workload by Cultivo's capture and redeployment rates.</p>
+      <div><a href="https://trym.io/pricing/" rel="noopener" target="_blank">Trym pricing benchmark ↗</a><a href="https://www.distru.com/cannabis-blog/what-cannabis-erp-means-to-your-brand" rel="noopener" target="_blank">Distru ERP benchmark ↗</a></div>
+    </div>
+  </div>
+</div></section>
 
 <!-- ============ THE MACHINE ============ -->
 <div class="machine-band" id="machine-sec"><div class="shell">
@@ -159,160 +314,6 @@
     </div>
   </div>
 </div></div>
-
-<!-- ============ ROI CALCULATOR ============ -->
-<section class="paper roi-section" id="roi"><div class="shell">
-  <div class="sec-head"><span class="figno">The economics</span><h2>What does drift cost your facility?</h2><span class="side">hard savings · capacity · upside</span></div>
-  <p class="lede">Model the value of keeping the plan, the floor and the ledger in agreement. Cultivo will not call a returned hour payroll savings unless it actually leaves payroll, avoids a hire, or gets redeployed into measured output.</p>
-
-  <div class="roi-machine">
-    <span class="m-corner tl"></span><span class="m-corner tr"></span><span class="m-corner bl"></span><span class="m-corner br"></span>
-    <div class="roi-machine-head">
-      <div><span class="roi-eyebrow">Cultivo value instrument · MK.I</span><h3>Facility ROI calculator</h3></div>
-      <div class="roi-duty"><i></i><span>Model live</span></div>
-    </div>
-
-    <form id="roiCalc" class="roi-layout">
-      <div class="roi-controls">
-        <fieldset class="roi-panel roi-presets">
-          <legend>01 · Facility pattern</legend>
-          <p class="roi-help">Start with a pattern, then replace every assumption with your own.</p>
-          <div class="roi-preset-row" role="group" aria-label="Facility size presets">
-            <button type="button" class="roi-preset" data-roi-preset="lean">Lean</button>
-            <button type="button" class="roi-preset is-active" data-roi-preset="mid">Multi-room</button>
-            <button type="button" class="roi-preset" data-roi-preset="large">Multi-site</button>
-          </div>
-          <div class="roi-input-grid roi-input-grid--3">
-            <label><span>Annual finished-product revenue</span><span class="roi-money"><b>$</b><input id="roiRevenue" name="annualRevenue" type="number" min="0" step="100000" value="4000000"></span></label>
-            <label><span>Contribution margin</span><span class="roi-suffix"><input id="roiMargin" name="contributionMargin" type="number" min="0" max="100" step="1" value="60"><b>%</b></span></label>
-            <label><span>Operating weeks / year</span><input id="roiWeeks" name="operatingWeeks" type="number" min="1" max="52" step="1" value="52"></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="roi-panel">
-          <legend>02 · Work the machine can return</legend>
-          <p class="roi-help">Enter time currently spent chasing status, reconciling records, re-keying work and rebuilding the plan.</p>
-          <div class="roi-role-table">
-            <div class="roi-role-head"><span>Role</span><span>People</span><span>Work / person</span><span>Loaded rate</span></div>
-            <div class="roi-role-row">
-              <span><b>Cultivation techs</b><small>minutes / workday</small></span>
-              <label><span class="sr-only">Cultivation technicians</span><input id="roiTechs" type="number" min="0" step="1" value="12"></label>
-              <label><span class="sr-only">Technician minutes per workday</span><input id="roiTechMins" type="number" min="0" max="480" step="5" value="15"></label>
-              <label><span class="sr-only">Technician loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiTechRate" type="number" min="0" step="1" value="26"></span></label>
-            </div>
-            <div class="roi-role-row">
-              <span><b>Managers</b><small>hours / week</small></span>
-              <label><span class="sr-only">Managers</span><input id="roiManagers" type="number" min="0" step="1" value="3"></label>
-              <label><span class="sr-only">Manager hours per week</span><input id="roiManagerHours" type="number" min="0" max="40" step="0.5" value="5"></label>
-              <label><span class="sr-only">Manager loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiManagerRate" type="number" min="0" step="1" value="45"></span></label>
-            </div>
-            <div class="roi-role-row">
-              <span><b>Admin + inventory</b><small>hours / week</small></span>
-              <label><span class="sr-only">Administrative and inventory staff</span><input id="roiAdmins" type="number" min="0" step="1" value="2"></label>
-              <label><span class="sr-only">Administrative hours per week</span><input id="roiAdminHours" type="number" min="0" max="40" step="0.5" value="4"></label>
-              <label><span class="sr-only">Administrative loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiAdminRate" type="number" min="0" step="1" value="35"></span></label>
-            </div>
-            <div class="roi-role-row">
-              <span><b>Owner / senior lead</b><small>hours / week</small></span>
-              <label><span class="sr-only">Owners or senior leaders</span><input id="roiLeads" type="number" min="0" step="1" value="1"></label>
-              <label><span class="sr-only">Senior leader hours per week</span><input id="roiLeadHours" type="number" min="0" max="40" step="0.5" value="3"></label>
-              <label><span class="sr-only">Senior leader loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiLeadRate" type="number" min="0" step="1" value="65"></span></label>
-            </div>
-          </div>
-          <details class="roi-formula">
-            <summary>How labor is calculated</summary>
-            <p>Technicians: people × minutes per workday × five days × operating weeks × loaded rate. Weekly roles: people × hours per week × operating weeks × loaded rate. Cultivo's capture rate is applied once; only the redeployed share enters modeled annual value.</p>
-          </details>
-
-          <div class="roi-slider-grid">
-            <label class="roi-slider"><span><b>Workload Cultivo captures</b><output id="roiCaptureReadout" for="roiCapture">60%</output></span><input id="roiCapture" type="range" min="0" max="100" step="5" value="60"><small>Core defaults to 35%; governed agent workflows increase the portion that can happen without opening another system.</small></label>
-            <label class="roi-slider"><span><b>Released time productively redeployed</b><output id="roiRedeployReadout" for="roiRedeploy">75%</output></span><input id="roiRedeploy" type="range" min="0" max="100" step="5" value="75"><small>The remainder stays visible as capacity, but is not included in modeled annual value.</small></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="roi-panel">
-          <legend>03 · Leakage, risk and upside</legend>
-          <div class="roi-input-grid">
-            <label><span>Overtime / contractors removed annually</span><span class="roi-money"><b>$</b><input id="roiOvertime" type="number" min="0" step="1000" value="0"></span><small>Count only spend that would actually disappear.</small></label>
-            <label><span>Annual preventable write-offs + rework</span><span class="roi-money"><b>$</b><input id="roiLosses" type="number" min="0" step="1000" value="50000"></span><small>Inventory errors, oversells, duplicate work and avoidable corrections.</small></label>
-          </div>
-          <label class="roi-slider roi-slider--single"><span><b>Leakage Cultivo can prevent</b><output id="roiLossCaptureReadout" for="roiLossCapture">60%</output></span><input id="roiLossCapture" type="range" min="0" max="100" step="5" value="60"></label>
-          <div class="roi-input-grid">
-            <label><span>Potential production / revenue recovery</span><span class="roi-suffix"><input id="roiProductionGain" type="number" min="0" max="20" step="0.1" value="1"><b>%</b></span><small>Keep at zero until the facility has a credible operational hypothesis.</small></label>
-            <label class="roi-slider"><span><b>Confidence in that upside</b><output id="roiConfidenceReadout" for="roiConfidence">50%</output></span><input id="roiConfidence" type="range" min="0" max="100" step="5" value="50"><small>Strategic upside is confidence-weighted before it enters the result.</small></label>
-          </div>
-          <div class="roi-hire">
-            <label class="roi-check"><input id="roiHireVerified" type="checkbox"><span><b>Count a documented avoided hire as hard savings</b><small>Only turn this on when the role is budgeted and independent of the released capacity above.</small></span></label>
-            <label><span>Fully loaded annual cost</span><span class="roi-money"><b>$</b><input id="roiHireCost" type="number" min="0" step="1000" value="65000"></span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="roi-panel">
-          <legend>04 · Fit the powertrain</legend>
-          <p class="roi-help">Choose the operating model. Package assumptions remain editable; pricing is shown plainly.</p>
-          <div class="roi-package-grid">
-            <label class="roi-package"><input type="radio" name="roiPackage" value="core"><span><b>Core</b><em>$2,500 / mo</em><small>Planner, ledger and read-only diagnostics.</small></span></label>
-            <label class="roi-package"><input type="radio" name="roiPackage" value="operator" checked><span><b>Operator</b><em>$3,500 / mo</em><small>3–5 governed agent workflows.</small></span></label>
-            <label class="roi-package"><input type="radio" name="roiPackage" value="performance"><span><b>Performance</b><em>$6,000 / mo</em><small>Cross-functional operating program.</small></span></label>
-          </div>
-          <p class="roi-package-note">Need evidence first? A 90-day agentic proof is scoped at $15,000–$18,000 with baselines, event receipts and a value reading.</p>
-          <label class="roi-slider roi-slider--single"><span><b>Required benefit / cost hurdle</b><output id="roiHurdleReadout" for="roiHurdle">2.0×</output></span><input id="roiHurdle" type="range" min="1" max="5" step="0.5" value="2"></label>
-        </fieldset>
-      </div>
-
-      <aside class="roi-results" aria-live="polite">
-        <div class="roi-output-hero">
-          <span>Modeled annual value</span>
-          <output id="roiAnnualValue">$0</output>
-          <small>Hard savings + redeployed capacity + confidence-weighted upside</small>
-        </div>
-
-        <div class="roi-value-stack">
-          <div><span>Hard-dollar savings</span><output id="roiHardSavings">$0</output><small id="roiHardNote">Cash movement only</small></div>
-          <div><span>Capacity released</span><output id="roiCapacityValue">$0</output><small id="roiCapacityNote">0 hours / year</small></div>
-          <div><span>Strategic upside</span><output id="roiStrategicValue">$0</output><small id="roiStrategicNote">Confidence-weighted before inclusion</small></div>
-        </div>
-
-        <div class="roi-data-plate">
-          <div class="roi-data-head"><span id="roiPackageName">Operator</span><i></i></div>
-          <div><span>Monthly software</span><output id="roiMonthlyPrice">$3,500</output></div>
-          <div><span>Implementation</span><output id="roiImplementation">$12,000</output></div>
-          <div><span>First-year investment</span><output id="roiFirstYearCost">$54,000</output></div>
-          <div><span>First-year net value</span><output id="roiNetValue">$0</output></div>
-          <div><span>First-year ROI</span><output id="roiRoi">0%</output></div>
-          <div><span>Benefit / cost</span><output id="roiBenefitCost">0.0×</output></div>
-          <div><span>Modeled payback</span><output id="roiPayback">—</output></div>
-        </div>
-
-        <div class="roi-verdict">
-          <div class="roi-verdict-head"><span>Economic fit</span><output id="roiFitLabel">Reading model</output></div>
-          <div class="roi-meter" aria-hidden="true"><i id="roiMeterFill"></i><b id="roiMeterMark"></b></div>
-          <p id="roiVerdictText">Adjust the facility assumptions to read the model.</p>
-          <p class="roi-headroom"><span>Monthly price supported at your hurdle, after implementation</span><output id="roiHeadroom">$0</output></p>
-        </div>
-
-        <div class="roi-actions">
-          <a class="cta roi-email" id="roiEmail" href="mailto:justin@gopraxis.ai?subject=Cultivo%20ROI%20model">Send this model</a>
-          <a class="cta ghost" href="mailto:justin@gopraxis.ai?subject=Cultivo%2090-day%20proof%20pilot">Design a 90-day proof</a>
-        </div>
-        <p class="roi-disclaimer">Illustrative estimate, not a guarantee. Capacity becomes cash only when payroll, overtime or contractor spend changes—or when the time is redeployed into measured output. Avoided hire and strategic upside are excluded unless you enter and qualify them.</p>
-      </aside>
-    </form>
-
-    <div class="roi-value-map">
-      <span>Value map</span>
-      <div><b>Planner + agent</b><small>Returned coordination and reconciliation time</small><em>Capacity</em></div>
-      <div><b>Ledger + safeguards</b><small>Prevented write-offs, oversells and rework</small><em>Hard savings</em></div>
-      <div><b>Owner's ledger</b><small>Yield, throughput and harvest-to-cash improvement</small><em>Strategic upside</em></div>
-    </div>
-
-    <div class="roi-benchmark">
-      <span>Market reference</span>
-      <p>Peer cannabis operations vendors publish examples of roughly <b>125–200 staff hours per month</b> returned. This model starts from your actual roles and discounts that workload by Cultivo's capture and redeployment rates.</p>
-      <div><a href="https://trym.io/pricing/" rel="noopener" target="_blank">Trym pricing benchmark ↗</a><a href="https://www.distru.com/cannabis-blog/what-cannabis-erp-means-to-your-brand" rel="noopener" target="_blank">Distru ERP benchmark ↗</a></div>
-    </div>
-  </div>
-</div></section>
 
 <!-- ============ FIG 1 SCHEMATIC ============ -->
 <section class="paper" id="fig1"><div class="shell">

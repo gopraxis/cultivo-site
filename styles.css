@@ -154,14 +154,19 @@
 
   /* ROI value instrument */
   .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;}
-  .roi-section{background:var(--paper);}
+  .roi-section{background:var(--paper);border-top:3px solid var(--ink);}
   .roi-section .lede{margin-bottom:30px;}
   .roi-machine{position:relative;background:var(--obsidian);color:var(--lum);border:2px solid var(--ink);box-shadow:0 18px 48px rgba(34,27,16,.14);}
   .roi-machine-head{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 22px;border-bottom:1px solid var(--wire);background:#11100C;}
   .roi-machine-head h3{font-family:var(--disp);font-size:25px;line-height:1;text-transform:uppercase;letter-spacing:.08em;margin:5px 0 0;color:var(--lum);}
+  .roi-brand{display:inline-flex;align-items:center;gap:10px;margin-right:14px;font:700 16px var(--disp);letter-spacing:.32em;text-transform:uppercase;color:var(--lum);}
+  .roi-brand::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--brass-lum);}
   .roi-eyebrow{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-lum);}
   .roi-duty{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#7FB894;white-space:nowrap;}
   .roi-duty i{width:7px;height:7px;border-radius:50%;background:#7FB894;box-shadow:0 0 12px rgba(127,184,148,.7);}
+  .roi-cycle-rail{display:flex;align-items:center;gap:13px;padding:8px 22px;border-bottom:1px solid var(--wire);background:#0E0D09;font:9px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brass-lum);}
+  .roi-cycle-rail i{font-style:normal;color:#625A49;}
+  .roi-cycle-rail b{margin-left:auto;font-weight:400;color:#756D5A;letter-spacing:.08em;}
   .roi-layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(330px,.9fr);align-items:start;}
   .roi-controls{padding:20px;border-right:1px solid var(--wire);display:grid;gap:14px;}
   .roi-panel{min-width:0;margin:0;padding:18px;border:1px solid var(--wire);background:var(--ob2);}
@@ -285,6 +290,8 @@
   @media(max-width:700px){
     .roi-machine-head{align-items:flex-start;padding:16px;}
     .roi-duty{display:none;}
+    .roi-cycle-rail{padding:8px 16px;gap:8px;flex-wrap:wrap;}
+    .roi-cycle-rail b{width:100%;margin-left:0;}
     .roi-controls,.roi-results{padding:12px;}
     .roi-panel{padding:14px 12px;}
     .roi-input-grid,.roi-input-grid--3,.roi-slider-grid,.roi-hire,.roi-package-grid{grid-template-columns:1fr;}
