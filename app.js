@@ -456,3 +456,150 @@ resize();
 pushEv('Cultivo',`model live: ${CFG.label.toLowerCase()} · ${SPAWN_EVERY}-day cadence · one closed loop`);
 requestAnimationFrame(n=>{lastT=n;frame(n);});
 })();
+
+/* ============ Cultivo ROI value instrument ============ */
+(function(){
+const form=document.getElementById('roiCalc');
+if(!form)return;
+
+const PACKAGES={
+ core:{name:'Core',monthly:2500,implementation:10000,capture:35,description:'planner, ledger and read-only diagnostics'},
+ operator:{name:'Operator',monthly:3500,implementation:12000,capture:60,description:'3–5 governed agent workflows'},
+ performance:{name:'Performance',monthly:6000,implementation:20000,capture:75,description:'a cross-functional operating program'}
+};
+const PRESETS={
+ lean:{roiRevenue:2000000,roiMargin:55,roiWeeks:52,roiTechs:6,roiTechMins:12,roiTechRate:25,roiManagers:1,roiManagerHours:4,roiManagerRate:45,roiAdmins:1,roiAdminHours:3,roiAdminRate:34,roiLeads:1,roiLeadHours:2,roiLeadRate:65,roiOvertime:0,roiLosses:25000},
+ mid:{roiRevenue:4000000,roiMargin:60,roiWeeks:52,roiTechs:12,roiTechMins:15,roiTechRate:26,roiManagers:3,roiManagerHours:5,roiManagerRate:45,roiAdmins:2,roiAdminHours:4,roiAdminRate:35,roiLeads:1,roiLeadHours:3,roiLeadRate:65,roiOvertime:0,roiLosses:50000},
+ large:{roiRevenue:12000000,roiMargin:60,roiWeeks:52,roiTechs:30,roiTechMins:20,roiTechRate:28,roiManagers:6,roiManagerHours:6,roiManagerRate:50,roiAdmins:4,roiAdminHours:6,roiAdminRate:38,roiLeads:2,roiLeadHours:4,roiLeadRate:75,roiOvertime:25000,roiLosses:150000}
+};
+const $=id=>document.getElementById(id);
+const num=id=>Math.max(0,Number($(id).value)||0);
+const money=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+const number=new Intl.NumberFormat('en-US',{maximumFractionDigits:0});
+const setText=(id,value)=>{$(id).textContent=value;};
+const selectedPackage=()=>document.querySelector('input[name="roiPackage"]:checked').value;
+
+function calculate(){
+ const weeks=Math.min(52,num('roiWeeks'));
+ const workdays=weeks*5;
+ const techHours=num('roiTechs')*(num('roiTechMins')/60)*workdays;
+ const managerHours=num('roiManagers')*num('roiManagerHours')*weeks;
+ const adminHours=num('roiAdmins')*num('roiAdminHours')*weeks;
+ const leadHours=num('roiLeads')*num('roiLeadHours')*weeks;
+ const addressableHours=techHours+managerHours+adminHours+leadHours;
+ const addressableValue=(techHours*num('roiTechRate'))+(managerHours*num('roiManagerRate'))+(adminHours*num('roiAdminRate'))+(leadHours*num('roiLeadRate'));
+ const capture=num('roiCapture')/100;
+ const redeploy=num('roiRedeploy')/100;
+ const capturedHours=addressableHours*capture;
+ const capacityValue=addressableValue*capture;
+ const capacityIncluded=capacityValue*redeploy;
+
+ const preventedLoss=num('roiLosses')*(num('roiLossCapture')/100);
+ const avoidedHire=$('roiHireVerified').checked?num('roiHireCost'):0;
+ const hardSavings=num('roiOvertime')+preventedLoss+avoidedHire;
+
+ const strategicPotential=num('roiRevenue')*(num('roiMargin')/100)*(num('roiProductionGain')/100);
+ const strategicIncluded=strategicPotential*(num('roiConfidence')/100);
+ const annualValue=hardSavings+capacityIncluded+strategicIncluded;
+
+ const packageKey=selectedPackage();
+ const pkg=PACKAGES[packageKey];
+ const firstYearCost=(pkg.monthly*12)+pkg.implementation;
+ const netValue=annualValue-firstYearCost;
+ const benefitCost=firstYearCost?annualValue/firstYearCost:0;
+ const firstYearRoi=firstYearCost?(netValue/firstYearCost)*100:0;
+ const payback=annualValue>0?firstYearCost/(annualValue/12):Infinity;
+ const hurdle=num('roiHurdle');
+ const priceHeadroom=hurdle>0?Math.max(0,((annualValue/hurdle)-pkg.implementation)/12):0;
+
+ setText('roiCaptureReadout',`${number.format(num('roiCapture'))}%`);
+ setText('roiRedeployReadout',`${number.format(num('roiRedeploy'))}%`);
+ setText('roiLossCaptureReadout',`${number.format(num('roiLossCapture'))}%`);
+ setText('roiConfidenceReadout',`${number.format(num('roiConfidence'))}%`);
+ setText('roiHurdleReadout',`${hurdle.toFixed(1)}×`);
+ setText('roiAnnualValue',money.format(annualValue));
+ setText('roiHardSavings',money.format(hardSavings));
+ setText('roiHardNote',avoidedHire?'Includes documented avoided hire':'Cash movement only; no avoided hire counted');
+ setText('roiCapacityValue',money.format(capacityValue));
+ setText('roiCapacityNote',`${number.format(capturedHours)} hours / year · ${money.format(capacityIncluded)} included`);
+ setText('roiStrategicValue',money.format(strategicPotential));
+ setText('roiStrategicNote',`${money.format(strategicIncluded)} included after confidence`);
+ setText('roiPackageName',pkg.name);
+ setText('roiMonthlyPrice',money.format(pkg.monthly));
+ setText('roiImplementation',money.format(pkg.implementation));
+ setText('roiFirstYearCost',money.format(firstYearCost));
+ setText('roiNetValue',money.format(netValue));
+ setText('roiRoi',`${firstYearRoi.toFixed(0)}%`);
+ setText('roiBenefitCost',`${benefitCost.toFixed(1)}×`);
+ setText('roiPayback',Number.isFinite(payback)?`${payback.toFixed(1)} months`:'—');
+ setText('roiHeadroom',`${money.format(priceHeadroom)} / mo`);
+
+ $('roiNetValue').classList.toggle('is-negative',netValue<0);
+ $('roiRoi').classList.toggle('is-negative',firstYearRoi<0);
+ $('roiMeterFill').style.width=`${Math.min(100,(benefitCost/5)*100)}%`;
+ $('roiMeterMark').style.left=`${Math.min(100,(hurdle/5)*100)}%`;
+ $('roiHireCost').disabled=!$('roiHireVerified').checked;
+
+ const coreCapacity=addressableValue*(PACKAGES.core.capture/100)*redeploy;
+ const coreBenefit=hardSavings+coreCapacity+strategicIncluded;
+ const coreCost=(PACKAGES.core.monthly*12)+PACKAGES.core.implementation;
+ const coreRatio=coreBenefit/coreCost;
+ const cashCoverage=firstYearCost?Math.min(999,(hardSavings/firstYearCost)*100):0;
+ let fitLabel,verdict;
+ if(benefitCost>=hurdle){
+  fitLabel=`Clears ${hurdle.toFixed(1)}× hurdle`;
+  verdict=`The ${pkg.name} model clears your hurdle with ${number.format(capturedHours)} distinct hours returned per year. Hard savings alone cover ${cashCoverage.toFixed(0)}% of first-year cost; the rest of the case depends on measured redeployment and operating upside.`;
+ }else if(packageKey!=='core'&&coreRatio>=hurdle){
+  fitLabel='Core first';
+  verdict=`The current assumptions support Core at ${coreRatio.toFixed(1)}×, but not ${pkg.name} at the ${hurdle.toFixed(1)}× hurdle. Prove the additional agentic capture in a 90-day pilot before expanding.`;
+ }else if(benefitCost>=1){
+  fitLabel='Positive, below hurdle';
+  verdict=`The model is positive in year one, but does not yet clear your ${hurdle.toFixed(1)}× hurdle. A pilot should measure returned hours, prevented errors and one full plan-to-actual cycle before treating the upside as bankable.`;
+ }else{
+  fitLabel='Pilot validation needed';
+  verdict=`These assumptions do not yet support the selected package in year one. Start with a bounded proof, or revisit only the costs you can document—never inflate capacity into cash savings.`;
+ }
+ setText('roiFitLabel',fitLabel);
+ setText('roiVerdictText',verdict);
+
+ const emailBody=[
+  'Cultivo ROI model',
+  '',
+  `Package: ${pkg.name} (${money.format(pkg.monthly)}/month + ${money.format(pkg.implementation)} implementation)`,
+  `Modeled annual value: ${money.format(annualValue)}`,
+  `Hard-dollar savings: ${money.format(hardSavings)}`,
+  `Capacity released: ${number.format(capturedHours)} hours/year (${money.format(capacityValue)} opportunity; ${money.format(capacityIncluded)} included)`,
+  `Strategic upside: ${money.format(strategicPotential)} potential; ${money.format(strategicIncluded)} included`,
+  `First-year investment: ${money.format(firstYearCost)}`,
+  `First-year net value: ${money.format(netValue)}`,
+  `Benefit/cost: ${benefitCost.toFixed(1)}x`,
+  `Payback: ${Number.isFinite(payback)?payback.toFixed(1)+' months':'not reached'}`,
+  '',
+  `Facility revenue assumption: ${money.format(num('roiRevenue'))}`,
+  `Workload capture: ${number.format(num('roiCapture'))}%`,
+  `Productive redeployment: ${number.format(num('roiRedeploy'))}%`,
+  `Required hurdle: ${hurdle.toFixed(1)}x`,
+  '',
+  'Illustrative estimate; assumptions require pilot validation.'
+ ].join('\n');
+ $('roiEmail').href=`mailto:justin@gopraxis.ai?subject=${encodeURIComponent('Cultivo ROI model')}&body=${encodeURIComponent(emailBody)}`;
+}
+
+document.querySelectorAll('[data-roi-preset]').forEach(button=>{
+ button.addEventListener('click',()=>{
+  const preset=PRESETS[button.dataset.roiPreset];
+  Object.entries(preset).forEach(([id,value])=>{$(id).value=value;});
+  document.querySelectorAll('[data-roi-preset]').forEach(item=>item.classList.toggle('is-active',item===button));
+  calculate();
+ });
+});
+document.querySelectorAll('input[name="roiPackage"]').forEach(input=>{
+ input.addEventListener('change',()=>{
+  $('roiCapture').value=PACKAGES[input.value].capture;
+  calculate();
+ });
+});
+form.addEventListener('input',calculate);
+form.addEventListener('change',calculate);
+calculate();
+})();
