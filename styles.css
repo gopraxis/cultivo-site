@@ -392,6 +392,9 @@
   .pf .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--lum-soft);margin-top:6px;line-height:1.6;}
   .proof-line{margin-top:22px;color:#B8BBB7;font-size:15px;max-width:74ch;}
   .proof-line .mono{font-family:var(--mono);font-size:12px;color:var(--brass-lum);}
+  .planner-proof-frame{position:relative;border:1.5px solid var(--brass-lum);margin-bottom:14px;padding:9px;background:var(--lum);overflow:hidden;}
+  .planner-shot{display:block;width:100%;height:auto;}
+  .planner-shot--light{filter:invert(1) hue-rotate(180deg) saturate(.72) brightness(1.04) contrast(.92);}
   .case-shift{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:stretch;margin-top:26px;}
   .case-shift article{border:1px solid var(--wire);background:var(--ob2);padding:24px;}
   .case-shift article>span{font:10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--copper);}
