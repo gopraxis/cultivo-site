@@ -30,7 +30,7 @@ Make changes on a branch, open a PR, and check the preview URL Vercel posts befo
 | `styles.css` | All styling, including the design tokens in `:root` |
 | `app.js` | Interactions (the living facility model, scroll behavior) |
 | `assets/fonts/` | Barlow Condensed and Zilla Slab, self-hosted |
-| `assets/planner-current-light.jpg` | Current light-mode Planning Overview screenshot, Fig. 2 |
+| `assets/planner-schedule-live.jpg` | Current Production Planner schedule with seeded demo data, Fig. 2 |
 | `assets/cultivo-mark.svg` | The product mark used by the live Cultivo app |
 | `assets/cultivo-og.png` | Site-wide social preview |
 | `calculator.html` | Standalone Cultivo value calculator |
