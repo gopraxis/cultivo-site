@@ -10,21 +10,29 @@
 <meta property="og:url" content="https://cultivo.ag/" />
 <meta property="og:title" content="Cultivo — machine-age agriculture" />
 <meta property="og:description" content="Cultivo is the cultivation OS that stays true even when nobody opens it: the plan, the record, and the reconciliation between them, kept honest by an always-on agent in Slack or WhatsApp. Built by Praxis." />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230C0B08'/%3E%3Crect x='5' y='7' width='22' height='14' rx='2' fill='none' stroke='%23C9974B' stroke-width='1.6'/%3E%3Ccircle cx='16' cy='14' r='3.2' fill='none' stroke='%23C9974B' stroke-width='1.4'/%3E%3Cline x1='16' y1='14' x2='18.2' y2='11.8' stroke='%23C9974B' stroke-width='1.4'/%3E%3Ccircle cx='8' cy='9.5' r='.9' fill='%23C9974B'/%3E%3Ccircle cx='24' cy='9.5' r='.9' fill='%23C9974B'/%3E%3Crect x='9' y='24' width='14' height='3' rx='1.5' fill='none' stroke='%23E9DDBB' stroke-opacity='.6'/%3E%3C/svg%3E" />
+<meta property="og:image" content="https://cultivo.ag/assets/cultivo-og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cultivo — machine-age agriculture" />
+<meta name="twitter:description" content="Run the whole operation from one live system—the plan, the record, and the reconciliation between them." />
+<meta name="twitter:image" content="https://cultivo.ag/assets/cultivo-og.png" />
+<link rel="icon" href="assets/cultivo-mark.svg" />
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header><div class="shell mast">
-  <span class="wordmark">Cultivo</span>
+  <a class="brand-lockup" href="index.html" aria-label="Cultivo home">
+    <span class="cultivo-mark-frame" aria-hidden="true"><img src="assets/cultivo-mark.svg" alt=""></span>
+    <span class="cultivo-wordmark">CULTIVO</span>
+  </a>
   <span class="tag">Machine-age agriculture</span>
   <nav>
     <a href="#machine-sec">The machine</a>
     <a href="#agent">The agent</a>
-    <a href="#roi">The value</a>
+    <a href="calculator.html">The value</a>
     <a href="#modules">Modules</a>
     <a href="https://app.cultivo.ag">Operator log in</a>
-    <a class="cta" href="mailto:justin@gopraxis.ai?subject=Cultivo%20pilot">Book a pilot</a>
+    <a class="cta" href="#walkthrough">See it on your operation</a>
   </nav>
 </div></header>
 
@@ -34,8 +42,9 @@
   <p class="sub">Farm machinery for the information layer: <b>the plan, the record, and the reconciliation between them.</b></p>
   <p class="subsub">An always-on agent keeps the books honest one plain yes/no question at a time, asked in Slack or WhatsApp, so the schedule ripples, records, and reports itself while your crew keeps working.</p>
   <div class="ctas">
-    <a class="cta" href="#roi">Calculate the cost of drift</a>
+    <a class="cta" href="#walkthrough">See it on your operation</a>
     <a class="cta ghost" href="#machine-sec">See the machine run</a>
+    <a class="text-link" href="calculator.html">Calculate the cost of drift →</a>
   </div>
   <div class="heroplate">
     <div class="hp-head">Data plate <i></i></div>
@@ -48,158 +57,41 @@
   </div>
 </div>
 
-<!-- ============ ROI CALCULATOR ============ -->
-<section class="paper roi-section" id="roi"><div class="shell">
-  <div class="sec-head"><span class="figno">Cultivo value engine</span><h2>Put a number on drift</h2><span class="side">instrument CV.I · continuous reading</span></div>
-  <p class="lede">The plan says one thing. The floor does another. The ledger finds out later. Read what it is worth to keep all three true—with cash savings, working capacity and operational upside kept on separate gauges.</p>
+<!-- ============ CLIENT OUTCOMES + EARLY PROOF ============ -->
+<section class="outcome-band" aria-labelledby="outcomes-title"><div class="shell">
+  <div class="sec-head outcome-head"><span class="figno">What changes</span><h2 id="outcomes-title">The operation gets easier to trust</h2><span class="side">from the floor to the forecast</span></div>
+  <div class="outcome-grid">
+    <article class="outcome-card">
+      <span class="outcome-no">01</span>
+      <h3>Sellable dates stay honest</h3>
+      <p>When harvest moves, dry, trim, testing, packaging, and the date sales can promise move with it.</p>
+    </article>
+    <article class="outcome-card">
+      <span class="outcome-no">02</span>
+      <h3>Handoffs stop disappearing</h3>
+      <p>The next room and the next crew see capacity and labor collisions before they become tomorrow's emergency.</p>
+    </article>
+    <article class="outcome-card">
+      <span class="outcome-no">03</span>
+      <h3>The ledger closes behind the work</h3>
+      <p>Your crew answers one plain question. Cultivo updates the plan, records the change, and leaves a receipt.</p>
+    </article>
+  </div>
+  <div class="proof-rail" aria-label="Cultivo operating record">
+    <div><b>16 mo</b><span>running production</span></div>
+    <div><b>200+</b><span>batches tracked</span></div>
+    <div><b>117</b><span>strains in the record</span></div>
+    <div><b>50,316</b><span>clean ledger rows</span></div>
+    <p><span>Field record · licensed Arizona operator</span>The first unit never stopped running.</p>
+  </div>
+</div></section>
 
-  <div class="roi-machine">
-    <span class="m-corner tl"></span><span class="m-corner tr"></span><span class="m-corner bl"></span><span class="m-corner br"></span>
-    <div class="roi-machine-head">
-      <div><span class="roi-brand">Cultivo</span><span class="roi-eyebrow">Machine-age agriculture · value instrument</span><h3>The economics of staying true</h3></div>
-      <div class="roi-duty"><i></i><span>Model live</span></div>
-    </div>
-    <div class="roi-cycle-rail"><span>Intent</span><i>→</i><span>Execution</span><i>→</i><span>Outcome</span><b>Every decision becomes a record</b></div>
-
-    <form id="roiCalc" class="roi-layout">
-      <div class="roi-controls">
-        <fieldset class="roi-panel roi-presets">
-          <legend>01 · Facility pattern</legend>
-          <p class="roi-help">Start with a pattern, then replace every assumption with your own.</p>
-          <div class="roi-preset-row" role="group" aria-label="Facility size presets">
-            <button type="button" class="roi-preset" data-roi-preset="lean">Lean</button>
-            <button type="button" class="roi-preset is-active" data-roi-preset="mid">Multi-room</button>
-            <button type="button" class="roi-preset" data-roi-preset="large">Multi-site</button>
-          </div>
-          <div class="roi-input-grid roi-input-grid--3">
-            <label><span>Annual finished-product revenue</span><span class="roi-money"><b>$</b><input id="roiRevenue" name="annualRevenue" type="number" min="0" step="100000" value="4000000"></span></label>
-            <label><span>Contribution margin</span><span class="roi-suffix"><input id="roiMargin" name="contributionMargin" type="number" min="0" max="100" step="1" value="60"><b>%</b></span></label>
-            <label><span>Operating weeks / year</span><input id="roiWeeks" name="operatingWeeks" type="number" min="1" max="52" step="1" value="52"></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="roi-panel">
-          <legend>02 · Work the machine can return</legend>
-          <p class="roi-help">Enter time currently spent chasing status, reconciling records, re-keying work and rebuilding the plan.</p>
-          <div class="roi-role-table">
-            <div class="roi-role-head"><span>Role</span><span>People</span><span>Work / person</span><span>Loaded rate</span></div>
-            <div class="roi-role-row">
-              <span><b>Cultivation techs</b><small>minutes / workday</small></span>
-              <label><span class="sr-only">Cultivation technicians</span><input id="roiTechs" type="number" min="0" step="1" value="12"></label>
-              <label><span class="sr-only">Technician minutes per workday</span><input id="roiTechMins" type="number" min="0" max="480" step="5" value="15"></label>
-              <label><span class="sr-only">Technician loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiTechRate" type="number" min="0" step="1" value="26"></span></label>
-            </div>
-            <div class="roi-role-row">
-              <span><b>Managers</b><small>hours / week</small></span>
-              <label><span class="sr-only">Managers</span><input id="roiManagers" type="number" min="0" step="1" value="3"></label>
-              <label><span class="sr-only">Manager hours per week</span><input id="roiManagerHours" type="number" min="0" max="40" step="0.5" value="5"></label>
-              <label><span class="sr-only">Manager loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiManagerRate" type="number" min="0" step="1" value="45"></span></label>
-            </div>
-            <div class="roi-role-row">
-              <span><b>Admin + inventory</b><small>hours / week</small></span>
-              <label><span class="sr-only">Administrative and inventory staff</span><input id="roiAdmins" type="number" min="0" step="1" value="2"></label>
-              <label><span class="sr-only">Administrative hours per week</span><input id="roiAdminHours" type="number" min="0" max="40" step="0.5" value="4"></label>
-              <label><span class="sr-only">Administrative loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiAdminRate" type="number" min="0" step="1" value="35"></span></label>
-            </div>
-            <div class="roi-role-row">
-              <span><b>Owner / senior lead</b><small>hours / week</small></span>
-              <label><span class="sr-only">Owners or senior leaders</span><input id="roiLeads" type="number" min="0" step="1" value="1"></label>
-              <label><span class="sr-only">Senior leader hours per week</span><input id="roiLeadHours" type="number" min="0" max="40" step="0.5" value="3"></label>
-              <label><span class="sr-only">Senior leader loaded hourly rate</span><span class="roi-money"><b>$</b><input id="roiLeadRate" type="number" min="0" step="1" value="65"></span></label>
-            </div>
-          </div>
-          <details class="roi-formula">
-            <summary>How labor is calculated</summary>
-            <p>Technicians: people × minutes per workday × five days × operating weeks × loaded rate. Weekly roles: people × hours per week × operating weeks × loaded rate. Cultivo's capture rate is applied once; only the redeployed share enters modeled annual value.</p>
-          </details>
-
-          <div class="roi-slider-grid">
-            <label class="roi-slider"><span><b>Workload Cultivo captures</b><output id="roiCaptureReadout" for="roiCapture">60%</output></span><input id="roiCapture" type="range" min="0" max="100" step="5" value="60"><small>Core defaults to 35%; governed agent workflows increase the portion that can happen without opening another system.</small></label>
-            <label class="roi-slider"><span><b>Released time productively redeployed</b><output id="roiRedeployReadout" for="roiRedeploy">75%</output></span><input id="roiRedeploy" type="range" min="0" max="100" step="5" value="75"><small>The remainder stays visible as capacity, but is not included in modeled annual value.</small></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="roi-panel">
-          <legend>03 · Leakage, risk and upside</legend>
-          <div class="roi-input-grid">
-            <label><span>Overtime / contractors removed annually</span><span class="roi-money"><b>$</b><input id="roiOvertime" type="number" min="0" step="1000" value="0"></span><small>Count only spend that would actually disappear.</small></label>
-            <label><span>Annual preventable write-offs + rework</span><span class="roi-money"><b>$</b><input id="roiLosses" type="number" min="0" step="1000" value="50000"></span><small>Inventory errors, oversells, duplicate work and avoidable corrections.</small></label>
-          </div>
-          <label class="roi-slider roi-slider--single"><span><b>Leakage Cultivo can prevent</b><output id="roiLossCaptureReadout" for="roiLossCapture">60%</output></span><input id="roiLossCapture" type="range" min="0" max="100" step="5" value="60"></label>
-          <div class="roi-input-grid">
-            <label><span>Potential production / revenue recovery</span><span class="roi-suffix"><input id="roiProductionGain" type="number" min="0" max="20" step="0.1" value="1"><b>%</b></span><small>Keep at zero until the facility has a credible operational hypothesis.</small></label>
-            <label class="roi-slider"><span><b>Confidence in that upside</b><output id="roiConfidenceReadout" for="roiConfidence">50%</output></span><input id="roiConfidence" type="range" min="0" max="100" step="5" value="50"><small>Strategic upside is confidence-weighted before it enters the result.</small></label>
-          </div>
-          <div class="roi-hire">
-            <label class="roi-check"><input id="roiHireVerified" type="checkbox"><span><b>Count a documented avoided hire as hard savings</b><small>Only turn this on when the role is budgeted and independent of the released capacity above.</small></span></label>
-            <label><span>Fully loaded annual cost</span><span class="roi-money"><b>$</b><input id="roiHireCost" type="number" min="0" step="1000" value="65000"></span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="roi-panel">
-          <legend>04 · Fit the powertrain</legend>
-          <p class="roi-help">Choose the operating model. Package assumptions remain editable; pricing is shown plainly.</p>
-          <div class="roi-package-grid">
-            <label class="roi-package"><input type="radio" name="roiPackage" value="core"><span><b>Core</b><em>$2,500 / mo</em><small>Planner, ledger and read-only diagnostics.</small></span></label>
-            <label class="roi-package"><input type="radio" name="roiPackage" value="operator" checked><span><b>Operator</b><em>$3,500 / mo</em><small>3–5 governed agent workflows.</small></span></label>
-            <label class="roi-package"><input type="radio" name="roiPackage" value="performance"><span><b>Performance</b><em>$6,000 / mo</em><small>Cross-functional operating program.</small></span></label>
-          </div>
-          <p class="roi-package-note">Otto's contribution lives in the workload-capture gauge—not in magic math. Need evidence first? A 90-day agentic proof is scoped at $15,000–$18,000 with baselines, event receipts and a value reading.</p>
-          <label class="roi-slider roi-slider--single"><span><b>Required benefit / cost hurdle</b><output id="roiHurdleReadout" for="roiHurdle">2.0×</output></span><input id="roiHurdle" type="range" min="1" max="5" step="0.5" value="2"></label>
-        </fieldset>
-      </div>
-
-      <aside class="roi-results" aria-live="polite">
-        <div class="roi-output-hero">
-          <span>Modeled annual value</span>
-          <output id="roiAnnualValue">$0</output>
-          <small>Hard savings + redeployed capacity + confidence-weighted upside</small>
-        </div>
-
-        <div class="roi-value-stack">
-          <div><span>Hard-dollar savings</span><output id="roiHardSavings">$0</output><small id="roiHardNote">Cash movement only</small></div>
-          <div><span>Capacity released</span><output id="roiCapacityValue">$0</output><small id="roiCapacityNote">0 hours / year</small></div>
-          <div><span>Strategic upside</span><output id="roiStrategicValue">$0</output><small id="roiStrategicNote">Confidence-weighted before inclusion</small></div>
-        </div>
-
-        <div class="roi-data-plate">
-          <div class="roi-data-head"><span id="roiPackageName">Operator</span><i></i></div>
-          <div><span>Monthly software</span><output id="roiMonthlyPrice">$3,500</output></div>
-          <div><span>Implementation</span><output id="roiImplementation">$12,000</output></div>
-          <div><span>First-year investment</span><output id="roiFirstYearCost">$54,000</output></div>
-          <div><span>First-year net value</span><output id="roiNetValue">$0</output></div>
-          <div><span>First-year ROI</span><output id="roiRoi">0%</output></div>
-          <div><span>Benefit / cost</span><output id="roiBenefitCost">0.0×</output></div>
-          <div><span>Modeled payback</span><output id="roiPayback">—</output></div>
-        </div>
-
-        <div class="roi-verdict">
-          <div class="roi-verdict-head"><span>Economic fit</span><output id="roiFitLabel">Reading model</output></div>
-          <div class="roi-meter" aria-hidden="true"><i id="roiMeterFill"></i><b id="roiMeterMark"></b></div>
-          <p id="roiVerdictText">Adjust the facility assumptions to read the model.</p>
-          <p class="roi-headroom"><span>Monthly price supported at your hurdle, after implementation</span><output id="roiHeadroom">$0</output></p>
-        </div>
-
-        <div class="roi-actions">
-          <a class="cta roi-email" id="roiEmail" href="mailto:justin@gopraxis.ai?subject=Cultivo%20ROI%20model">Send this model</a>
-          <a class="cta ghost" href="mailto:justin@gopraxis.ai?subject=Cultivo%2090-day%20proof%20pilot">Design a 90-day proof</a>
-        </div>
-        <p class="roi-disclaimer">Illustrative estimate, not a guarantee. Capacity becomes cash only when payroll, overtime or contractor spend changes—or when the time is redeployed into measured output. Avoided hire and strategic upside are excluded unless you enter and qualify them.</p>
-      </aside>
-    </form>
-
-    <div class="roi-value-map">
-      <span>Value map</span>
-      <div><b>Planner + agent</b><small>Returned coordination and reconciliation time</small><em>Capacity</em></div>
-      <div><b>Ledger + safeguards</b><small>Prevented write-offs, oversells and rework</small><em>Hard savings</em></div>
-      <div><b>Owner's ledger</b><small>Yield, throughput and harvest-to-cash improvement</small><em>Strategic upside</em></div>
-    </div>
-
-    <div class="roi-benchmark">
-      <span>Market reference</span>
-      <p>Peer cannabis operations vendors publish examples of roughly <b>125–200 staff hours per month</b> returned. This model starts from your actual roles and discounts that workload by Cultivo's capture and redeployment rates.</p>
-      <div><a href="https://trym.io/pricing/" rel="noopener" target="_blank">Trym pricing benchmark ↗</a><a href="https://www.distru.com/cannabis-blog/what-cannabis-erp-means-to-your-brand" rel="noopener" target="_blank">Distru ERP benchmark ↗</a></div>
-    </div>
+<!-- ============ VALUE CALCULATOR ============ -->
+<section class="paper value-teaser" id="value"><div class="shell">
+  <div class="sec-head"><span class="figno">Cultivo value engine</span><h2>Put a number on drift</h2><span class="side">instrument CV.I · separate reading</span></div>
+  <div class="value-teaser-grid">
+    <p class="lede">The plan says one thing. The floor does another. The ledger finds out later. Model what it is worth to keep all three true—without interrupting the story of how the machine works.</p>
+    <a class="cta" href="calculator.html">Open the value calculator</a>
   </div>
 </div></section>
 
@@ -219,9 +111,9 @@
     <div id="mcap"><div class="ce" id="mcapE"></div><div class="ct" id="mcapT"></div></div>
     <div id="mdm"><div class="dm-card">
       <div class="dm-head">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9974B" stroke-width="1.5">
-          <circle cx="12" cy="9" r="5"/><line x1="12" y1="1.5" x2="12" y2="4"/><circle cx="12" cy="1.5" r="1" fill="#C9974B" stroke="none"/>
-          <rect x="7" y="14" width="10" height="7" rx="1"/><circle cx="10" cy="9" r="1" fill="#C9974B" stroke="none"/><circle cx="14" cy="9" r="1" fill="#C9974B" stroke="none"/>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" stroke-width="1.5">
+          <circle cx="12" cy="9" r="5"/><line x1="12" y1="1.5" x2="12" y2="4"/><circle cx="12" cy="1.5" r="1" fill="#C9A24B" stroke="none"/>
+          <rect x="7" y="14" width="10" height="7" rx="1"/><circle cx="10" cy="9" r="1" fill="#C9A24B" stroke="none"/><circle cx="14" cy="9" r="1" fill="#C9A24B" stroke="none"/>
         </svg>
         <span class="dm-who" id="mdmWho"></span><span class="dm-chan">slack · dm</span>
       </div>
@@ -238,21 +130,16 @@
   </div>
 </div></div>
 
-<!-- ============ PROBLEM ============ -->
-<section class="paper"><div class="shell">
+<!-- ============ PROBLEM + LOOP ============ -->
+<section class="paper problem-loop"><div class="shell">
   <div class="sec-head"><span class="figno">The problem</span><h2>Every grow runs on two sets of books</h2><span class="side">field notes · recorded interviews and facility walks</span></div>
   <p class="lede">There is the plan, and there is what actually happened. In most facilities the distance between them lives in heads, group chats and a spreadsheet nobody trusts. Software was supposed to fix this. Then it asked the grower to do data entry.</p>
-  <div class="quotes" style="margin-top:26px;">
+  <div class="quotes quotes--compact" style="margin-top:26px;">
     <div class="q"><div class="qt">"Nine growers out of ten will not touch a computer. You have a gun to their head, they're not going to do it."</div><div class="qa">Cultivo's founder, after 16 years operating</div></div>
     <div class="q"><div class="qt">"Information moves through conversations, not systems."</div><div class="qa">Operator interview, licensed Arizona facility</div></div>
-    <div class="q"><div class="qt">"There's always such a wide gap between what's supposed to happen and how the plan actually gets adjusted."</div><div class="qa">Facility investor conversation</div></div>
   </div>
   <p class="micro" style="font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.08em;margin-top:10px;">Quotes from recorded interviews and facility walks, 2026. Roles kept anonymous.</p>
-</div></section>
-
-<!-- ============ THE LOOP ============ -->
-<section class="paper" style="padding-top:0;"><div class="shell">
-  <div class="sec-head"><span class="figno">The design</span><h2>One closed loop</h2><span class="side">every decision becomes a record</span></div>
+  <div class="sec-head loop-head"><span class="figno">The design</span><h2>One closed loop</h2><span class="side">every decision becomes a record</span></div>
   <div class="loop">
     <div class="lp"><h3>Intent</h3><p>The plan: cycles, room windows, mother allocation, schedules, SOPs. The Production Planner models the future and shows what every delay does to it.</p></div>
     <div class="arrow">→</div>
@@ -276,16 +163,16 @@
         <li><b>Slack at home, WhatsApp abroad.</b> The channel is a setting, not a rollout.</li>
       </ul>
       <div style="display:flex;align-items:center;gap:18px;margin-top:26px;">
-        <svg width="92" height="118" viewBox="0 0 92 118" fill="none" stroke="#C9974B" stroke-width="1.6" aria-label="Otto, the Cultivo agent, drawn as a machine-age robot">
-          <line x1="46" y1="4" x2="46" y2="14"/><circle cx="46" cy="4" r="2.4" fill="#C9974B" stroke="none"/>
+        <svg width="92" height="118" viewBox="0 0 92 118" fill="none" stroke="#C9A24B" stroke-width="1.6" aria-label="Otto, the Cultivo agent, drawn as a machine-age robot">
+          <line x1="46" y1="4" x2="46" y2="14"/><circle cx="46" cy="4" r="2.4" fill="#C9A24B" stroke="none"/>
           <rect x="26" y="14" width="40" height="30" rx="7"/>
           <circle cx="38" cy="28" r="3.6"/><circle cx="54" cy="28" r="3.6"/>
           <line x1="34" y1="37" x2="58" y2="37"/>
           <line x1="42" y1="44" x2="42" y2="50"/><line x1="50" y1="44" x2="50" y2="50"/>
           <rect x="22" y="50" width="48" height="38" rx="4"/>
           <circle cx="46" cy="66" r="9"/><line x1="46" y1="66" x2="51" y2="61"/>
-          <circle cx="27.5" cy="55" r="1.2" fill="#C9974B" stroke="none"/><circle cx="64.5" cy="55" r="1.2" fill="#C9974B" stroke="none"/>
-          <circle cx="27.5" cy="83" r="1.2" fill="#C9974B" stroke="none"/><circle cx="64.5" cy="83" r="1.2" fill="#C9974B" stroke="none"/>
+          <circle cx="27.5" cy="55" r="1.2" fill="#C9A24B" stroke="none"/><circle cx="64.5" cy="55" r="1.2" fill="#C9A24B" stroke="none"/>
+          <circle cx="27.5" cy="83" r="1.2" fill="#C9A24B" stroke="none"/><circle cx="64.5" cy="83" r="1.2" fill="#C9A24B" stroke="none"/>
           <line x1="22" y1="58" x2="10" y2="70"/><line x1="10" y1="70" x2="10" y2="80"/>
           <line x1="70" y1="58" x2="82" y2="70"/><rect x="78" y="70" width="8" height="12" rx="2"/>
           <rect x="30" y="88" width="12" height="14"/><rect x="50" y="88" width="12" height="14"/>
@@ -294,14 +181,14 @@
         </svg>
         <div>
           <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--brass-lum);text-transform:uppercase;">Otto · unit 001</div>
-          <div style="font-size:13px;color:#CFC5A6;max-width:34ch;margin-top:4px;">The hired hand on duty since 2025. Signs the morning briefs and the quiet questions. Never signs your compliance paperwork; that stays in the system's plain voice.</div>
+          <div style="font-size:13px;color:#B8BBB7;max-width:34ch;margin-top:4px;">The hired hand on duty since 2025. Signs the morning briefs and the quiet questions. Never signs your compliance paperwork; that stays in the system's plain voice.</div>
         </div>
       </div>
     </div>
     <div class="slackmock">
       <div class="sm-head"># direct message · 6:47 AM</div>
       <div class="sm-msg">
-        <span class="ava"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9974B" stroke-width="1.5"><circle cx="12" cy="9" r="5"/><line x1="12" y1="1.5" x2="12" y2="4"/><circle cx="12" cy="1.5" r="1" fill="#C9974B" stroke="none"/><rect x="7" y="14" width="10" height="7" rx="1"/><circle cx="10" cy="9" r="1" fill="#C9974B" stroke="none"/><circle cx="14" cy="9" r="1" fill="#C9974B" stroke="none"/></svg></span>
+        <span class="ava"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" stroke-width="1.5"><circle cx="12" cy="9" r="5"/><line x1="12" y1="1.5" x2="12" y2="4"/><circle cx="12" cy="1.5" r="1" fill="#C9A24B" stroke="none"/><rect x="7" y="14" width="10" height="7" rx="1"/><circle cx="10" cy="9" r="1" fill="#C9A24B" stroke="none"/><circle cx="14" cy="9" r="1" fill="#C9A24B" stroke="none"/></svg></span>
         <div class="bd"><div class="nm">Cultivo Agent</div>
         <div class="tx">Morning. Trichome check on <span class="mono">260420-DGW</span> says it wants 2 more days, so harvest is drifting past plan. Push harvest and ripple the downstream schedule?</div></div>
       </div>
@@ -322,20 +209,20 @@
     <svg viewBox="0 0 980 420" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,monospace">
       <defs>
         <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-          <line x1="0" y1="0" x2="0" y2="7" stroke="#C7B896" stroke-width="1"/>
+          <line x1="0" y1="0" x2="0" y2="7" stroke="#33444F" stroke-width="1"/>
         </pattern>
         <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#96690D" stroke-width="1.6"/>
+          <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#C9A24B" stroke-width="1.6"/>
         </marker>
       </defs>
       <!-- outer wall -->
-      <rect x="18" y="18" width="944" height="384" fill="none" stroke="#221B10" stroke-width="2.5"/>
-      <rect x="26" y="26" width="928" height="368" fill="none" stroke="#C7B896" stroke-width="1"/>
+      <rect x="18" y="18" width="944" height="384" fill="none" stroke="#F4EFE4" stroke-width="2.5"/>
+      <rect x="26" y="26" width="928" height="368" fill="none" stroke="#33444F" stroke-width="1"/>
       <!-- corridor -->
       <rect x="40" y="188" width="900" height="44" fill="url(#hatch)" opacity=".35"/>
-      <text x="490" y="214" text-anchor="middle" font-size="10" letter-spacing="4" fill="#8A7D63">CORRIDOR</text>
+      <text x="490" y="214" text-anchor="middle" font-size="10" letter-spacing="4" fill="#728087">CORRIDOR</text>
       <!-- top row rooms -->
-      <g stroke="#221B10" stroke-width="1.8" fill="#EDE4CF">
+      <g stroke="#F4EFE4" stroke-width="1.8" fill="#121D29">
         <rect x="46"  y="44" width="90"  height="128"/>
         <rect x="146" y="44" width="108" height="128"/>
         <rect x="264" y="44" width="118" height="128"/>
@@ -345,7 +232,7 @@
         <rect x="806" y="44" width="128" height="128"/>
       </g>
       <!-- bottom row rooms -->
-      <g stroke="#221B10" stroke-width="1.8" fill="#EDE4CF">
+      <g stroke="#F4EFE4" stroke-width="1.8" fill="#121D29">
         <rect x="806" y="248" width="128" height="128"/>
         <rect x="668" y="248" width="128" height="128"/>
         <rect x="530" y="248" width="128" height="128"/>
@@ -354,7 +241,7 @@
         <rect x="86"  y="248" width="158" height="128"/>
       </g>
       <!-- room labels -->
-      <g font-size="11" fill="#221B10" text-anchor="middle" font-weight="bold" letter-spacing="1">
+      <g font-size="11" fill="#F4EFE4" text-anchor="middle" font-weight="bold" letter-spacing="1">
         <text x="91"  y="102">PLAN</text>
         <text x="200" y="102">MOTHERS</text>
         <text x="323" y="102">CLONE</text>
@@ -370,7 +257,7 @@
         <text x="165" y="306">DISPATCH</text>
       </g>
       <!-- sub labels -->
-      <g font-size="8.5" fill="#8A7D63" text-anchor="middle" letter-spacing="1">
+      <g font-size="8.5" fill="#728087" text-anchor="middle" letter-spacing="1">
         <text x="91"  y="118">PLANNER</text>
         <text x="200" y="118">STOCK PLANTS</text>
         <text x="323" y="118">PROPAGATION</text>
@@ -386,7 +273,7 @@
         <text x="165" y="322">5–7 DAY SLA</text>
       </g>
       <!-- flow arrows top -->
-      <g stroke="#96690D" stroke-width="1.6" fill="none">
+      <g stroke="#C9A24B" stroke-width="1.6" fill="none">
         <line x1="136" y1="108" x2="144" y2="108" marker-end="url(#arr)"/>
         <line x1="254" y1="108" x2="262" y2="108" marker-end="url(#arr)"/>
         <line x1="382" y1="108" x2="390" y2="108" marker-end="url(#arr)"/>
@@ -406,12 +293,12 @@
       </g>
       <!-- numbered callouts -->
       <g font-size="10.5" font-weight="bold">
-        <g fill="#EDE4CF" stroke="#96690D" stroke-width="1.6">
+        <g fill="#121D29" stroke="#C9A24B" stroke-width="1.6">
           <circle cx="56" cy="56" r="9"/><circle cx="156" cy="56" r="9"/><circle cx="274" cy="56" r="9"/><circle cx="402" cy="56" r="9"/>
           <circle cx="540" cy="56" r="9"/><circle cx="816" cy="260" r="9"/><circle cx="678" cy="260" r="9"/>
           <circle cx="540" cy="260" r="9"/><circle cx="402" cy="260" r="9"/><circle cx="264" cy="260" r="9"/><circle cx="96" cy="260" r="9"/>
         </g>
-        <g fill="#96690D" text-anchor="middle">
+        <g fill="#C9A24B" text-anchor="middle">
           <text x="56" y="60">1</text><text x="156" y="60">2</text><text x="274" y="60">3</text><text x="402" y="60">4</text>
           <text x="540" y="60">5</text><text x="816" y="264">6</text><text x="678" y="264">7</text>
           <text x="540" y="264">8</text><text x="402" y="264">9</text><text x="264" y="264">10</text><text x="96" y="264">11</text>
@@ -419,11 +306,13 @@
       </g>
       <!-- title block -->
       <g>
-        <rect x="694" y="380" width="260" height="20" fill="#E3D8BC" stroke="#221B10" stroke-width="1.5"/>
-        <text x="704" y="394" font-size="8.5" letter-spacing="1.4" fill="#221B10">CULTIVO MK.I · FACILITY SCHEMATIC</text>
+        <rect x="694" y="380" width="260" height="20" fill="#182735" stroke="#F4EFE4" stroke-width="1.5"/>
+        <text x="704" y="394" font-size="8.5" letter-spacing="1.4" fill="#F4EFE4">CULTIVO MK.I · FACILITY SCHEMATIC</text>
       </g>
     </svg>
   </div>
+  <details class="facility-detail">
+    <summary>Open the full station-by-station service map</summary>
   <table class="legend">
     <tr><th style="width:36px">№</th><th>Station</th><th>Crew</th><th>What the agent watches</th><th style="width:110px">Service status</th></tr>
     <tr><td class="no">1</td><td><b>Production Planner</b></td><td class="crew">Cultivation Mgr · Owner</td><td>Demand vs room windows, mother allocation, every delay's ripple through the schedule</td><td><span class="wbadge w-live">in service</span></td></tr>
@@ -438,28 +327,26 @@
     <tr><td class="no">10</td><td><b>Packaging</b></td><td class="crew">Prod Techs</td><td>Formats, labels at completion, jurisdiction label rules, misclick-proof submits</td><td><span class="wbadge w-live">in service</span></td></tr>
     <tr><td class="no">11</td><td><b>Dispatch</b></td><td class="crew">PP Mgr · Sales</td><td>Order pipeline risk, the 5-to-7-day promise, manifests, invoices, COAs out the door</td><td><span class="wbadge w-live">in service</span></td></tr>
   </table>
+  </details>
 </div></section>
 
 <!-- ============ MODULES ============ -->
 <section class="paper" id="modules" style="padding-top:0;"><div class="shell">
   <div class="sec-head"><span class="figno">The catalog</span><h2>One machine, fitted to your facility</h2><span class="side">core always ships · modules bolt on</span></div>
-  <p class="lede">The bones never change: the ledger, the loop, the agent, the governed write paths. Everything else is configuration: your day counts, your rooms, your strains, your labels, your language, your channel. Modules bolt on when you need them, like implements on a tractor.</p>
+  <p class="lede">The ledger, the loop, the agent, and the governed write paths always ship. Your rooms, day counts, strains, labels, language, and channel are configured around them.</p>
   <div class="bento" style="margin-top:26px;">
     <div class="mod wide"><div class="mh"><h3>Production Planner</h3><span class="mtag core">Core</span></div><p>The operations backbone. Plan cycles against real room windows and real mother capacity, then watch every deviation ripple forward with dates that stay honest. Plan against actual, always.</p><div class="mfoot">The instrument investors ask to see</div></div>
     <div class="mod"><div class="mh"><h3>The Agent</h3><span class="mtag core">Core</span></div><p>Capture, reconciliation and morning briefs in Slack or WhatsApp. Asks before it writes. Receipts everything.</p><div class="mfoot">The reason the books stay true</div></div>
     <div class="mod"><div class="mh"><h3>Inventory Ledger</h3><span class="mtag core">Core</span></div><p>Seed-to-sale chain of custody with conservation rules: mass balances, stages advance only with evidence.</p><div class="mfoot">Audit-ready by construction</div></div>
-    <div class="mod"><div class="mh"><h3>Propagation Capture</h3><span class="mtag">Module</span></div><p>Clone intake and transplants recorded by guided conversation, matched and reconciled against the plant ledger.</p><div class="mfoot">Closes the oldest gap in the building</div></div>
-    <div class="mod"><div class="mh"><h3>Waste + Compliance</h3><span class="mtag">Module</span></div><p>Draft, approve, apply. Physical sheets tied to digital logs, signed evidence, inspection packets on demand.</p><div class="mfoot">State-shaped, jurisdiction-configured</div></div>
-    <div class="mod"><div class="mh"><h3>Testing Custody</h3><span class="mtag">Module</span></div><p>Sample designation, custody tracking, COA capture, and plain-language answers about what passed.</p><div class="mfoot">Know what's at risk before it is</div></div>
-    <div class="mod"><div class="mh"><h3>Labor Planning</h3><span class="mtag">Module</span></div><p>Sees the week where harvest, defoliation and transplant collide before your crew lives it.</p><div class="mfoot">Bottlenecks, forecast</div></div>
+    <div class="mod"><div class="mh"><h3>Floor Capture</h3><span class="mtag">Module</span></div><p>Propagation, waste, testing custody, and the physical-to-digital handoff captured where the work happens.</p><div class="mfoot">The missing record, closed</div></div>
+    <div class="mod"><div class="mh"><h3>Labor + Handoffs</h3><span class="mtag">Module</span></div><p>Sees the week where harvest, defoliation, transplant, and post-production capacity collide before your crew lives it.</p><div class="mfoot">Bottlenecks, forecast</div></div>
     <div class="mod wide"><div class="mh"><h3>Owner's Ledger</h3><span class="mtag">Module</span></div><p>The investor view: cost per gram, labor per batch, throughput per week, plan-vs-actual revenue timing. The distance between reality and the pitch deck, measured.</p><div class="mfoot">For the person who signs the checks</div></div>
-    <div class="mod wide"><div class="mh"><h3>Your facility's implement</h3><span class="mtag" style="background:var(--copper)">Custom</span></div><p>Need something that isn't on this plate? It gets built as a module on the same bones, not as a change order that forks your system.</p><div class="mfoot">Configured, not customized</div></div>
   </div>
 </div></section>
 
 <!-- ============ PROOF ============ -->
 <div class="proof-band"><div class="shell">
-  <div class="sec-head" style="border-color:var(--wire);"><span class="figno" style="color:var(--brass-lum)">Field record</span><h2 style="color:var(--lum)">Built on a real floor, not a whiteboard</h2></div>
+  <div class="sec-head" style="border-color:var(--wire);"><span class="figno" style="color:var(--brass-lum)">Field record</span><h2 style="color:var(--lum)">From fragmented truth to one operating record</h2></div>
   <div style="position:relative;border:1.5px solid var(--wire);margin-bottom:14px;">
     <span class="m-corner tl"></span><span class="m-corner tr"></span><span class="m-corner bl"></span><span class="m-corner br"></span>
     <img src="assets/planner-fig2.jpg" alt="The Cultivo Production Planner: open flower windows, source-to-dry flow bands, and a selected production path with capacity checks" style="display:block;width:100%;height:auto;">
@@ -468,32 +355,54 @@
     <span class="figno">Fig. 2 — The planner · system flow view</span>
     <span class="figtext">Open flower windows, the four-band flow from source to dry, and one selected production path with its capacity math checked end to end. From the planner's signed design blueprint; piloting at a research facility now.</span>
   </div>
-  <div class="proofgrid">
-    <div class="pf"><div class="n">16 mo</div><div class="l">running production at a licensed Arizona operator</div></div>
-    <div class="pf"><div class="n">200+</div><div class="l">batches tracked seed to sale</div></div>
-    <div class="pf"><div class="n">117</div><div class="l">strains with live conversion intelligence</div></div>
-    <div class="pf"><div class="n">50,316</div><div class="l">ledger rows exported clean for compliance, first pass</div></div>
+  <div class="case-shift">
+    <article><span>Before Cultivo</span><h3>The operating truth lived between systems</h3><p>Plans, floor conversations, and compliance records described the same facility differently. The operator went looking for a plan-versus-actual cultivation system and found it did not exist.</p></article>
+    <div class="case-arrow" aria-hidden="true">→</div>
+    <article class="case-after"><span>Recorded result</span><h3>One production record survived the whole cycle</h3><p>Across 16 months, Cultivo tracked 200+ batches and 117 strains, then exported 50,316 ledger rows clean for compliance on the first pass.</p></article>
   </div>
-  <p class="proof-line">Cultivo was built by an operator who ran a multi-site cannabis operation, went looking for this software, and found it did not exist. The Production Planner is now piloting at a Canadian research facility with a PhD cultivation-science consultancy. <span class="mono">The first unit never stopped running.</span></p>
+  <p class="proof-line">The Production Planner is now piloting at a Canadian research facility with a PhD cultivation-science consultancy. <span class="mono">Built from the operating record, not a pitch-deck assumption.</span></p>
 </div></div>
 
 <!-- ============ PILOT ============ -->
-<section class="paper pilot"><div class="shell">
+<section class="paper pilot" id="walkthrough"><div class="shell">
   <div class="sec-head"><span class="figno">The offer</span><h2>Put the machine in your facility</h2><span class="side">configured, not customized · weeks, not quarters</span></div>
-  <p class="lede">A pilot is a working installation, not a slide deck. We interview your crew, fit the machine to your rooms and your day counts, and run it alongside your next cycle. You keep the recorded truth either way. Pricing is a fixed setup fee for the interview and configuration, then a flat monthly rate per facility once the machine stays. No hourly billing, no change orders.</p>
-  <div class="steps">
-    <div class="st"><span class="sn">Weeks 1–2</span><h3>The interview</h3><p>We walk your facility and your process the way a consultant would: rooms, roles, day counts, labels, language. The machine is configured from the conversation.</p></div>
-    <div class="st"><span class="sn">Weeks 3–6</span><h3>Run alongside</h3><p>The planner models your next cycle. The agent starts asking its quiet questions. Your crew answers in Slack or WhatsApp and keeps working.</p></div>
-    <div class="st"><span class="sn">Week 7</span><h3>The reading</h3><p>Plan against actual for a full cycle stage, in one place, for the first time. Then decide what the machine is worth to you.</p></div>
-  </div>
-  <div class="ctas" style="display:flex;gap:14px;flex-wrap:wrap;">
-    <a class="cta" href="mailto:justin@gopraxis.ai?subject=Cultivo%20pilot">Book a pilot conversation</a>
-    <a class="cta ghost" href="#machine-sec">Watch the machine again</a>
+  <div class="walkthrough-grid">
+    <div>
+      <p class="lede">Start with a 20-minute fit check—not a sales deck. We will map Cultivo against one real operating problem and tell you plainly whether a pilot makes sense.</p>
+      <div class="steps">
+        <div class="st"><span class="sn">Weeks 1–2</span><h3>Map the operation</h3><p>Rooms, roles, day counts, handoffs, and the record you need to trust.</p></div>
+        <div class="st"><span class="sn">Weeks 3–6</span><h3>Run alongside</h3><p>The planner models your next cycle while the agent captures what changes.</p></div>
+        <div class="st"><span class="sn">Week 7</span><h3>Read the result</h3><p>Compare plan against actual, keep the recorded truth, and decide what it is worth.</p></div>
+      </div>
+      <a class="text-link" href="calculator.html">Or model the business case first →</a>
+    </div>
+    <form class="walkthrough-form" id="walkthroughForm">
+      <span class="form-kicker">Request a walkthrough</span>
+      <h3>Show us where the plan loses contact with the floor.</h3>
+      <label>Your name<input id="leadName" name="name" autocomplete="name" required></label>
+      <label>Work email<input id="leadEmail" name="email" type="email" autocomplete="email" required></label>
+      <label>The first problem to solve
+        <select id="leadChallenge" name="challenge" required>
+          <option value="">Choose one</option>
+          <option>Planning drift and room capacity</option>
+          <option>Inventory and sellable dates</option>
+          <option>Labor and production handoffs</option>
+          <option>Compliance and record integrity</option>
+          <option>I need help finding the gap</option>
+        </select>
+      </label>
+      <button class="cta" type="submit">Request a 20-minute fit check</button>
+      <p class="form-note">This opens a prepared email to Justin at Praxis. No list, no automated sequence.</p>
+      <p class="form-status" id="walkthroughStatus" aria-live="polite"></p>
+    </form>
   </div>
 </div></section>
 
 <footer><div class="shell foot">
-  <span class="wordmark">Cultivo</span>
+  <a class="brand-lockup brand-lockup--compact" href="index.html" aria-label="Cultivo home">
+    <span class="cultivo-mark-frame" aria-hidden="true"><img src="assets/cultivo-mark.svg" alt=""></span>
+    <span class="cultivo-wordmark">CULTIVO</span>
+  </a>
   <span class="fnote">Built by Praxis · gopraxis.ai · partner inquiries from consultancies welcome</span>
   <span class="right"><a href="https://app.cultivo.ag" style="color:inherit;">Operator log in</a> · Fig. 0 is a working model of the live system · © 2026</span>
 </div></footer>

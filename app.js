@@ -1,8 +1,9 @@
 'use strict';
 /* ============ Cultivo machine v2 — config-driven facility engine ============ */
 (function(){
-const BRASS='#C9974B', LUM='#E9DDBB';
-const CLR={plan:'#7FA8CF',mom:'#D9A441',clone:'#C9B15E',veg:'#4FC08D',flower:'#E07A93',dry:'#B08D57',trim:'#C9A96A',cure:'#D9A441',test:'#7FA8CF',pack:'#9FC0A8',ship:'#6FA8DC'};
+if(!document.getElementById('machine'))return;
+const BRASS='#C9A24B', LUM='#F4EFE4';
+const CLR={plan:'#7DA6B7',mom:'#C9A24B',clone:'#BDAE72',veg:'#77A58E',flower:'#D7887E',dry:'#A88F66',trim:'#B99F70',cure:'#C9A24B',test:'#7DA6B7',pack:'#91AA9C',ship:'#7DA6B7'};
 
 /* ---------- facility configs (the loader) ---------- */
 const CONFIGS={
@@ -176,7 +177,7 @@ const flashRooms={};
 function drawGrid(){ctx.save();
  for(let x=WORLD.minX-40;x<=WORLD.maxX+40;x+=40)line(proj(x,-190,0),proj(x,170,0),'rgba(233,221,187,0.04)');
  for(let y=-190;y<=170;y+=40)line(proj(WORLD.minX-40,y,0),proj(WORLD.maxX+40,y,0),'rgba(233,221,187,0.04)');
- ctx.setLineDash([3,7]);line(proj(WORLD.minX,-20,0),proj(WORLD.maxX,-20,0),'rgba(201,151,75,0.14)',1.5);ctx.setLineDash([]);ctx.restore();}
+ ctx.setLineDash([3,7]);line(proj(WORLD.minX,-20,0),proj(WORLD.maxX,-20,0),'rgba(201,162,75,0.14)',1.5);ctx.setLineDash([]);ctx.restore();}
 function drawRoom(r,occ,now,capFill){const p=roomPoly(r);
  const lit=roomLight(r,now);
  const fl=flashRooms[r.key]&&now<flashRooms[r.key];
@@ -193,7 +194,7 @@ function drawRoom(r,occ,now,capFill){const p=roomPoly(r);
  if(r.capacity&&capFill!=null){const a=proj(r.x+4,r.y+r.h,2),b=proj(r.x+r.w-4,r.y+r.h,2);
   line(a,b,'rgba(233,221,187,0.14)',2.5);
   const f=Math.min(1,capFill);
-  line(a,{x:a.x+(b.x-a.x)*f,y:a.y+(b.y-a.y)*f},capFill>1.01?hexA('#E0564F',0.85):hexA(BRASS,0.8),2.5);}
+  line(a,{x:a.x+(b.x-a.x)*f,y:a.y+(b.y-a.y)*f},capFill>1.01?hexA('#D7887E',0.85):hexA(BRASS,0.8),2.5);}
  if(occ&&lit>0.5){const ctr=proj(r.cx,r.cy,0);const g=ctx.createRadialGradient(ctr.x,ctr.y,2,ctr.x,ctr.y,44*cam.zoom);
   g.addColorStop(0,hexA(r.c,0.13));g.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(ctr.x,ctr.y,44*cam.zoom,0,7);ctx.fill();}}
 function drawLabel(r,now){const lit=Math.max(roomLight(r,now),0.55);const p=proj(r.cx,r.y-6,40);
@@ -231,11 +232,11 @@ function drawFurniture(r,now){
  if(r.dock){const tx=r.x+18+truckOff(),ty=r.cy+6;
   // road stripes out the door
   ctx.save();ctx.setLineDash([6,8]);
-  line(proj(r.x-4,ty,0),proj(WORLD.minX,ty,0),hexA('#6FA8DC',0.25),1.2);ctx.restore();
-  poly([proj(tx,ty-9,0),proj(tx+34,ty-9,0),proj(tx+34,ty+9,0),proj(tx,ty+9,0)],hexA('#6FA8DC',0.12),hexA('#6FA8DC',0.6));
-  poly([proj(tx,ty-9,16),proj(tx+34,ty-9,16),proj(tx+34,ty+9,16),proj(tx,ty+9,16)],null,hexA('#6FA8DC',0.5));
-  [[tx,ty-9],[tx+34,ty-9],[tx+34,ty+9],[tx,ty+9]].forEach(c=>line(proj(c[0],c[1],0),proj(c[0],c[1],16),hexA('#6FA8DC',0.45)));
-  poly([proj(tx+34,ty-7,0),proj(tx+44,ty-7,0),proj(tx+44,ty+7,0),proj(tx+34,ty+7,0)],hexA('#6FA8DC',0.2),hexA('#6FA8DC',0.7));}}
+  line(proj(r.x-4,ty,0),proj(WORLD.minX,ty,0),hexA('#7DA6B7',0.25),1.2);ctx.restore();
+  poly([proj(tx,ty-9,0),proj(tx+34,ty-9,0),proj(tx+34,ty+9,0),proj(tx,ty+9,0)],hexA('#7DA6B7',0.12),hexA('#7DA6B7',0.6));
+  poly([proj(tx,ty-9,16),proj(tx+34,ty-9,16),proj(tx+34,ty+9,16),proj(tx,ty+9,16)],null,hexA('#7DA6B7',0.5));
+  [[tx,ty-9],[tx+34,ty-9],[tx+34,ty+9],[tx,ty+9]].forEach(c=>line(proj(c[0],c[1],0),proj(c[0],c[1],16),hexA('#7DA6B7',0.45)));
+  poly([proj(tx+34,ty-7,0),proj(tx+44,ty-7,0),proj(tx+44,ty+7,0),proj(tx+34,ty+7,0)],hexA('#7DA6B7',0.2),hexA('#7DA6B7',0.7));}}
 const TRAVEL=0.9;
 function slotOf(b,room){const rr=srand(b.i+13);
  return{x:room.cx+(rr()-0.5)*room.w*0.4,y:room.cy+(rr()-0.5)*room.h*0.35};}
@@ -602,4 +603,31 @@ document.querySelectorAll('input[name="roiPackage"]').forEach(input=>{
 form.addEventListener('input',calculate);
 form.addEventListener('change',calculate);
 calculate();
+})();
+
+// Walkthrough request: keep the static site dependency-free while doing the
+// qualification work before the visitor reaches their mail client.
+(()=>{
+ const form=document.getElementById('walkthroughForm');
+ if(!form)return;
+ const status=document.getElementById('walkthroughStatus');
+ form.addEventListener('submit',event=>{
+  event.preventDefault();
+  if(!form.reportValidity())return;
+  const name=document.getElementById('leadName').value.trim();
+  const email=document.getElementById('leadEmail').value.trim();
+  const challenge=document.getElementById('leadChallenge').value;
+  const subject=`Cultivo fit check — ${challenge}`;
+  const body=[
+   'Cultivo walkthrough request',
+   '',
+   `Name: ${name}`,
+   `Work email: ${email}`,
+   `First problem to solve: ${challenge}`,
+   '',
+   'I would like to schedule a 20-minute fit check.'
+  ].join('\n');
+  status.textContent='Your request is ready. Opening your email app…';
+  window.location.href=`mailto:justin@gopraxis.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+ });
 })();
