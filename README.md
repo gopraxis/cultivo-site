@@ -31,6 +31,9 @@ Make changes on a branch, open a PR, and check the preview URL Vercel posts befo
 | `app.js` | Interactions (the living facility model, scroll behavior) |
 | `assets/fonts/` | Barlow Condensed and Zilla Slab, self-hosted |
 | `assets/planner-fig2.jpg` | The planner screenshot, Fig. 2 |
+| `assets/cultivo-mark.svg` | The product mark used by the live Cultivo app |
+| `assets/cultivo-og.png` | Site-wide social preview |
+| `calculator.html` | Standalone Cultivo value calculator |
 
 Colors live as CSS custom properties at the top of `styles.css`. Change them there, not inline, so the whole page moves together.
 
@@ -41,9 +44,10 @@ The full system is the `cultivo_brand_system_machine_age` record in the Praxis B
 **The thesis is farm machinery for the information layer of cultivation.** Dependable machinery, not software.
 
 - **Never lead with AI.** Lead with the job. The promise is "the system stays true even when nobody opens it."
-- **Type:** Barlow Condensed 700 for display, Zilla Slab 400/700 for body. Both are self-hosted in `assets/fonts/`. Do not add a font.
-- **Palette:** paper `#EDE4CF`, ink `#221B10`, brass `#96690D` is *the* accent, copper `#8C4F1F` secondary, stamp red `#9E3B26` rare and meaningful only. The obsidian world is `#0C0B08` with luminance `#E9DDBB`.
-- **Two worlds:** paper is the machine at rest (marketing), obsidian is the machine at work (instruments). Obsidian panels framed inside paper pages is the signature move.
+- **Type:** Barlow Condensed 700 for display and Zilla Slab 400/700 for body. The Cultivo wordmark follows the app lockup and uses IBM Plex Sans with a system fallback.
+- **Palette:** app canvas `#0B1219`, surface `#121D29`, raised surface `#182735`, warm ink `#F4EFE4`, and brass `#C9A24B`. Green `#77A58E`, coral `#D7887E`, and blue `#7DA6B7` are functional accents.
+- **Depth:** the full site now lives in the app's dark operating world. Contrast comes from layered navy surfaces, warm ink, fine wire lines, and restrained brass instrumentation.
+- **Logo:** use `assets/cultivo-mark.svg` and the CULTIVO lockup. Never substitute the CULT/Cult Ops tenant mark.
 - **Cultivo is its own brand.** Praxis appears only as "Built by Praxis" in the footer. CultOps is tenant one's instance name and is never said to prospects.
 - **Not:** weed-culture, sci-fi AI chrome, generic SaaS gradients, or the Praxis Bebas editorial look.
 
