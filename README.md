@@ -27,8 +27,10 @@ Make changes on a branch, open a PR, and check the preview URL Vercel posts befo
 | File | What it is |
 |---|---|
 | `index.html` | Page structure and all copy |
-| `styles.css` | All styling, including the design tokens in `:root` |
-| `app.js` | Interactions (the living facility model, scroll behavior) |
+| `landing.css` | Homepage layout, brand tokens, responsive and reduced-motion styles |
+| `landing.js` | Homepage cutaway facility, room selection, camera, example workflow, screenshot dialog and email-draft form |
+| `scenario.mjs` | Pure illustrative date / conflict state used by the homepage and tests |
+| `styles.css` / `app.js` | Existing value calculator styling and logic (unchanged) |
 | `assets/fonts/` | Barlow Condensed and Zilla Slab, self-hosted |
 | `assets/planner-schedule-live.jpg` | Current Production Planner schedule with seeded demo data, Fig. 2 |
 | `assets/cultivo-mark.svg` | The product mark used by the live Cultivo app |
@@ -60,3 +62,7 @@ Pricing is not ratified. Do not put numbers on this page.
 ## A note on the assets
 
 Fonts and the Fig. 2 screenshot used to be base64 data-URIs inline in `index.html`, which made the file 314KB and painful to edit. They are now real files. That is better for editing and for caching, but it means this page is no longer a single self-contained file you can paste into a Claude artifact. If you need an artifact version, inline them again first.
+
+## Redesign review
+
+The facility example contains illustrative data only and makes no backend writes. Run `node --test tests/scenario.test.mjs` to check date propagation and persistent conflict behavior. `tests/responsive.html` embeds the real page at 390px for native Safari layout review; tests and review notes are excluded from deployment. See `REVIEW.md` for scope, validation, and claims limitations.

@@ -21,6 +21,9 @@ This preview is based on `gopraxis/cultivo-site` main at `fb74727`. It does not 
 - Native Safari 390px iframe viewport: hero, model, proposal warning, request form and native required-field validation.
 - The mobile review uses the real page in a sized iframe; it is not a physical iPhone or touch-gesture test.
 - Email draft composition reviewed in source; no test email sent.
+- Vercel preview verified in native Safari: complete hero/model, harvest-delay interaction, handoff section, and calculator navigation/preset recalculation.
+- Preview URL: https://cultivo-site-git-codex-faf572-justin-morrows-projects-bd1c185b.vercel.app
+- Pull request: https://github.com/gopraxis/cultivo-site/pull/7
 
 ## Claims / limitations
 
