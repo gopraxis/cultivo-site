@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/calculator.html",
+      "destination": "/#planner",
+      "permanent": true
+    },
+    {
+      "source": "/calculator",
+      "destination": "/#planner",
+      "permanent": true
+    }
+  ]
+}

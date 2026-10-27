@@ -33,7 +33,6 @@ Make changes on a branch, open a PR, and check the preview URL Vercel posts befo
 | `assets/planner-schedule-live.jpg` | Current Production Planner schedule with seeded demo data, Fig. 2 |
 | `assets/cultivo-mark.svg` | The product mark used by the live Cultivo app |
 | `assets/cultivo-og.png` | Site-wide social preview |
-| `calculator.html` | Standalone Cultivo value calculator |
 
 Colors live as CSS custom properties at the top of `styles.css`. Change them there, not inline, so the whole page moves together.
 
