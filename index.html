@@ -49,10 +49,11 @@
 <!-- ============ PROOF ============ -->
 <div class="proof-band" id="planner"><div class="shell">
   <div class="sec-head" style="border-color:var(--wire);"><span class="figno" style="color:var(--brass-lum)">The planner</span><h2 style="color:var(--lum)">See the production schedule</h2></div>
-  <div class="planner-proof-frame">
+  <div class="planner-proof-frame" tabindex="0" role="region" aria-label="Planner screenshot; scroll horizontally on small screens" aria-describedby="planner-view-help">
     <span class="m-corner tl"></span><span class="m-corner tr"></span><span class="m-corner bl"></span><span class="m-corner br"></span>
     <img class="planner-shot planner-shot--light" src="assets/planner-schedule-live.jpg" alt="The current Cultivo Production Planner schedule showing 32 seeded cycles across propagation, veg, flower, and dry rooms, with live capacity and conflict indicators">
   </div>
+  <p class="planner-view-help" id="planner-view-help">On a small screen, swipe across the schedule or use the arrow keys when focused. <a href="assets/planner-schedule-live.jpg">Open the full-size screenshot</a>.</p>
   <div class="m-caption-plate" style="margin-bottom:34px;">
     <span class="figno">Production Planner · seeded schedule</span>
     <span class="figtext">See 32 cycles across propagation, veg, flower, and dry in one current schedule. The planner surfaces room conflicts, clone demand, upcoming flips and harvests, and the exact weeks where capacity collides. Seeded demo data; no customer record is shown.</span>
@@ -66,9 +67,10 @@
     <div>
       <p class="lede">The AI agent reads plain-language crew updates in the context of the production schedule. When a harvest drifts, it proposes a date change and the downstream adjustments. A person confirms before Cultivo applies the update, records the approval, and tells affected teams what moved.</p>
       <p>Compliance decisions stay with your team.</p>
+      <p class="example-note">Illustrative product workflow, not a customer case study or a measured customer outcome. The conversation shows a proposed change, human confirmation, and a recorded update.</p>
     </div>
     <div class="slackmock">
-      <div class="sm-head">Illustrative conversation · direct message</div>
+      <div class="sm-head">Example workflow · harvest delayed two days</div>
       <div class="sm-msg">
         <span class="ava"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" stroke-width="1.5"><circle cx="12" cy="9" r="5"/><line x1="12" y1="1.5" x2="12" y2="4"/><circle cx="12" cy="1.5" r="1" fill="#C9A24B" stroke="none"/><rect x="7" y="14" width="10" height="7" rx="1"/><circle cx="10" cy="9" r="1" fill="#C9A24B" stroke="none"/><circle cx="14" cy="9" r="1" fill="#C9A24B" stroke="none"/></svg></span>
         <div class="bd"><div class="nm">Cultivo Agent</div>
@@ -77,7 +79,7 @@
       <div class="sm-actions"><span class="sm-chip on">Yes, push it</span><span class="sm-chip">Not yet</span></div>
       <div class="sm-msg">
         <span class="ava human">A</span>
-        <div class="bd"><div class="nm human">Andrew (Cultivation)</div><div class="tx">yes</div></div>
+        <div class="bd"><div class="nm human">Cultivation lead (example)</div><div class="tx">yes</div></div>
       </div>
       <div class="sm-receipt">✓ Harvest d105 → d107. Dry, trim, cure, test and packaging moved. Sales sees the new sellable date. Receipt #4187 on the ledger.</div>
     </div>
@@ -167,8 +169,8 @@
     <form class="walkthrough-form" id="walkthroughForm">
       <span class="form-kicker">Email a fit-check request</span>
       <h3>Show us where the plan loses contact with the floor.</h3>
-      <label>Your name<input id="leadName" name="name" autocomplete="name" required></label>
-      <label>Work email<input id="leadEmail" name="email" type="email" autocomplete="email" required></label>
+      <label>Your name<input id="leadName" name="name" autocomplete="name" maxlength="100" required></label>
+      <label>Work email<input id="leadEmail" name="email" type="email" autocomplete="email" maxlength="254" required></label>
       <label>The first problem to solve
         <select id="leadChallenge" name="challenge" required>
           <option value="">Choose one</option>
@@ -180,7 +182,9 @@
         </select>
       </label>
       <button class="cta" type="submit">Open email draft</button>
-      <p class="form-note">Opens your email app with a draft to Justin. Send it from your email app to request a 20-minute fit check. No mailing list and no automated follow-up.</p>
+      <button class="cta ghost" id="copyRequest" type="button">Copy request instead</button>
+      <label id="requestPreviewLabel" hidden>Request text<textarea id="requestPreview" rows="7" readonly></textarea></label>
+      <p class="form-note">This page prepares a draft; it does not submit your request. Send it from your email app, or copy it into your webmail to <a href="mailto:justin@gopraxis.ai">justin@gopraxis.ai</a>. No mailing list and no automated follow-up.</p>
       <p class="form-status" id="walkthroughStatus" aria-live="polite"></p>
     </form>
   </div>

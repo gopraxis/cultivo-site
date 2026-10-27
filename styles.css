@@ -314,3 +314,14 @@
   }
 
   .mast nav a.cta,.mast nav a.cta:hover{color:var(--paper);}
+
+  .planner-view-help,.example-note{font-size:14px;color:var(--ink-soft);line-height:1.5;}
+  .planner-view-help a,.form-note a{color:var(--brass);text-underline-offset:3px;}
+  .planner-proof-frame:focus-visible{outline:3px solid var(--brass);outline-offset:4px;}
+  .walkthrough-form [hidden]{display:none;}
+  .walkthrough-form textarea{width:100%;resize:vertical;background:var(--paper);color:var(--ink);border:1px solid var(--wire);padding:12px;font:14px/1.5 var(--serif);}
+  .walkthrough-form .cta.ghost:hover{color:var(--paper);}
+  @media(max-width:760px){
+    .planner-proof-frame{overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;padding:0;background:var(--paper);}
+    .planner-shot{width:1280px;max-width:none;height:500px;}
+  }

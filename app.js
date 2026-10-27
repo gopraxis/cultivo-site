@@ -464,9 +464,8 @@ requestAnimationFrame(n=>{lastT=n;frame(n);});
  const form=document.getElementById('walkthroughForm');
  if(!form)return;
  const status=document.getElementById('walkthroughStatus');
- form.addEventListener('submit',event=>{
-  event.preventDefault();
-  if(!form.reportValidity())return;
+ function requestDraft(){
+  if(!form.reportValidity())return null;
   const name=document.getElementById('leadName').value.trim();
   const email=document.getElementById('leadEmail').value.trim();
   const challenge=document.getElementById('leadChallenge').value;
@@ -480,7 +479,25 @@ requestAnimationFrame(n=>{lastT=n;frame(n);});
    '',
    'I would like to schedule a 20-minute fit check.'
   ].join('\n');
-  status.textContent='Your request is ready. Opening your email app…';
-  window.location.href=`mailto:justin@gopraxis.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return {subject,body};
+ }
+ form.addEventListener('submit',event=>{
+  event.preventDefault();
+  const draft=requestDraft();if(!draft)return;
+  status.textContent='Trying to open your email app. Nothing has been sent by this page; send the draft from your email app.';
+  window.location.href=`mailto:justin@gopraxis.ai?subject=${encodeURIComponent(draft.subject)}&body=${encodeURIComponent(draft.body)}`;
+ });
+ document.getElementById('copyRequest').addEventListener('click',async()=>{
+  const draft=requestDraft();if(!draft)return;
+  const text=`To: justin@gopraxis.ai\nSubject: ${draft.subject}\n\n${draft.body}`;
+  document.getElementById('requestPreviewLabel').hidden=false;
+  const preview=document.getElementById('requestPreview');preview.value=text;
+  try{
+   await navigator.clipboard.writeText(text);
+   status.textContent='Request copied. Paste it into your webmail and send it to Justin. Nothing has been sent yet.';
+  }catch{
+   preview.focus();preview.select();
+   status.textContent='Automatic copying was unavailable. Copy the selected request text into your webmail and send it to Justin. Nothing has been sent yet.';
+  }
  });
 })();
