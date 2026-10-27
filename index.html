@@ -27,12 +27,11 @@
   </a>
   <span class="tag">Machine-age agriculture</span>
   <nav>
-    <a href="#machine-sec">How it works</a>
-    <a href="#agent">The agent</a>
+    <a href="#agent">How it works</a>
     <a href="#planner">The planner</a>
     <a href="#modules">Modules</a>
     <a href="https://app.cultivo.ag">Operator log in</a>
-    <a class="cta" href="#walkthrough">Book a fit check</a>
+    <a class="cta" href="#walkthrough">Email a fit-check request</a>
   </nav>
 </div></header>
 
@@ -42,37 +41,79 @@
   <p class="sub">Keep production plans, floor activity, inventory, and sellable dates in sync.</p>
   <p class="subsub">Confirm changes in Slack or WhatsApp. Cultivo updates the plan and records the decision.</p>
   <div class="ctas">
-    <a class="cta" href="#walkthrough">Book a 20-minute fit check</a>
+    <a class="cta" href="#walkthrough">Email a fit-check request</a>
     <a class="cta ghost" href="#planner">See the production planner</a>
   </div>
 </div>
 
-<!-- ============ CLIENT OUTCOMES + EARLY PROOF ============ -->
-<section class="outcome-band" aria-labelledby="outcomes-title"><div class="shell">
-  <div class="sec-head outcome-head"><span class="figno">What changes</span><h2 id="outcomes-title">Know what is happening—and what changes next</h2><span class="side">from the floor to the sellable date</span></div>
-  <div class="outcome-grid">
-    <article class="outcome-card">
-      <span class="outcome-no">01</span>
-      <h3>Keep sellable dates current</h3>
-      <p>When harvest moves, Cultivo updates dry, trim, testing, packaging, and the date sales can confidently promise.</p>
-    </article>
-    <article class="outcome-card">
-      <span class="outcome-no">02</span>
-      <h3>Catch downstream conflicts early</h3>
-      <p>Cultivo warns the next crew before a delayed harvest creates a room, labor, or dry-capacity conflict.</p>
-    </article>
-    <article class="outcome-card">
-      <span class="outcome-no">03</span>
-      <h3>Capture the record as work happens</h3>
-      <p>Your crew answers one plain question. Cultivo updates the plan and records who confirmed the change.</p>
-    </article>
+<!-- ============ PROOF ============ -->
+<div class="proof-band" id="planner"><div class="shell">
+  <div class="sec-head" style="border-color:var(--wire);"><span class="figno" style="color:var(--brass-lum)">The planner</span><h2 style="color:var(--lum)">See the production schedule</h2></div>
+  <div class="planner-proof-frame">
+    <span class="m-corner tl"></span><span class="m-corner tr"></span><span class="m-corner bl"></span><span class="m-corner br"></span>
+    <img class="planner-shot planner-shot--light" src="assets/planner-schedule-live.jpg" alt="The current Cultivo Production Planner schedule showing 32 seeded cycles across propagation, veg, flower, and dry rooms, with live capacity and conflict indicators">
   </div>
-  <div class="proof-rail" aria-label="Cultivo operating record">
-    <div><b>16 mo</b><span>running production</span></div>
-    <div><b>200+</b><span>batches tracked</span></div>
-    <div><b>117</b><span>strains in the record</span></div>
-    <div><b>50,316</b><span>clean ledger rows</span></div>
-    <p><span>Field record · licensed Arizona operator</span></p>
+  <div class="m-caption-plate" style="margin-bottom:34px;">
+    <span class="figno">Production Planner · seeded schedule</span>
+    <span class="figtext">See 32 cycles across propagation, veg, flower, and dry in one current schedule. The planner surfaces room conflicts, clone demand, upcoming flips and harvests, and the exact weeks where capacity collides. Seeded demo data; no customer record is shown.</span>
+  </div>
+</div></div>
+
+<!-- ============ THE AGENT ============ -->
+<div class="agent-band" id="agent"><div class="shell">
+  <div class="sec-head"><span class="figno" style="color:var(--brass-lum)">The agent</span><h2>A person confirms the change</h2></div>
+  <div class="agent-grid">
+    <div>
+      <p class="lede">When something drifts, Cultivo asks the accountable person one plain question. After confirmation, it updates the affected dates, records who approved the change, and tells downstream teams what moved.</p>
+      <p>Compliance decisions stay with your team.</p>
+    </div>
+    <div class="slackmock">
+      <div class="sm-head">Illustrative conversation · direct message</div>
+      <div class="sm-msg">
+        <span class="ava"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" stroke-width="1.5"><circle cx="12" cy="9" r="5"/><line x1="12" y1="1.5" x2="12" y2="4"/><circle cx="12" cy="1.5" r="1" fill="#C9A24B" stroke="none"/><rect x="7" y="14" width="10" height="7" rx="1"/><circle cx="10" cy="9" r="1" fill="#C9A24B" stroke="none"/><circle cx="14" cy="9" r="1" fill="#C9A24B" stroke="none"/></svg></span>
+        <div class="bd"><div class="nm">Cultivo Agent</div>
+        <div class="tx">Morning. Trichome check on <span class="mono">260420-DGW</span> says it wants 2 more days, so harvest is drifting past plan. Push harvest and ripple the downstream schedule?</div></div>
+      </div>
+      <div class="sm-actions"><span class="sm-chip on">Yes, push it</span><span class="sm-chip">Not yet</span></div>
+      <div class="sm-msg">
+        <span class="ava human">A</span>
+        <div class="bd"><div class="nm human">Andrew (Cultivation)</div><div class="tx">yes</div></div>
+      </div>
+      <div class="sm-receipt">✓ Harvest d105 → d107. Dry, trim, cure, test and packaging moved. Sales sees the new sellable date. Receipt #4187 on the ledger.</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ============ PROBLEM + LOOP ============ -->
+<section class="paper problem-loop"><div class="shell">
+  <div class="sec-head"><span class="figno">The problem</span><h2>Built around crew conversations</h2><span class="side">field notes · recorded interviews and facility walks</span></div>
+  <div class="quotes" style="margin-top:26px;">
+    <div class="q"><div class="qt">"Information moves through conversations, not systems."</div><div class="qa">Operator interview, licensed Arizona facility</div></div>
+  </div>
+  <p class="micro" style="font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.08em;margin-top:10px;">Quote from a recorded operator interview, 2026. Role kept anonymous.</p>
+</div></section>
+
+<!-- ============ FIELD RECORD ============ -->
+<div class="proof-band"><div class="shell">
+  <div class="sec-head"><span class="figno">Field record</span><h2>From a licensed Arizona operation</h2></div>
+  <div class="case-shift">
+    <article><span>Before Cultivo</span><h3>The plan and the floor told different stories</h3><p>Schedules, crew conversations, and compliance records described the same facility differently. Every delay required someone to reconstruct what changed and who needed to know.</p></article>
+    <div class="case-arrow" aria-hidden="true">→</div>
+    <article class="case-after"><span>Recorded result</span><h3>One complete record from planning through compliance</h3><p>Across 16 months, Cultivo tracked 200+ batches and 117 strains, then exported 50,316 clean ledger rows for compliance on the first pass.</p></article>
+  </div>
+  <p class="proof-line">The Production Planner is now in pilot at a Canadian research facility with a cultivation-science consultancy.</p>
+</div></div>
+
+<!-- ============ MODULES ============ -->
+<section class="paper" id="modules" style="padding-top:0;"><div class="shell">
+  <div class="sec-head"><span class="figno">The system</span><h2>Tools for the operating record</h2><span class="side">core platform · practical modules</span></div>
+  <div class="bento" style="margin-top:26px;">
+    <div class="mod wide"><div class="mh"><h3>Production Planner</h3><span class="mtag core">Core</span></div><p>Plan cycles against real room windows, mother capacity, and downstream constraints. When work moves, see every affected date and conflict before committing the change.</p></div>
+    <div class="mod"><div class="mh"><h3>The Agent</h3><span class="mtag core">Core</span></div><p>Collect floor updates and send morning briefs in Slack or WhatsApp. Every change is confirmed by a person and recorded.</p></div>
+    <div class="mod"><div class="mh"><h3>Inventory Ledger</h3><span class="mtag core">Core</span></div><p>Maintain seed-to-sale chain of custody with mass-balance checks and evidence behind every stage change.</p></div>
+    <div class="mod"><div class="mh"><h3>Floor Capture</h3><span class="mtag">Module</span></div><p>Capture propagation, waste, testing custody, and physical handoffs at the moment the work happens.</p></div>
+    <div class="mod"><div class="mh"><h3>Labor + Handoffs</h3><span class="mtag">Module</span></div><p>See when harvest, defoliation, transplant, and post-production will compete for the same people and capacity.</p></div>
+    <div class="mod wide"><div class="mh"><h3>Owner's Ledger</h3><span class="mtag">Module</span></div><p>Track cost per gram, labor per batch, throughput per week, and plan-versus-actual revenue timing from the same operating record.</p></div>
   </div>
 </div></section>
 
@@ -106,241 +147,9 @@
   </div>
   <div id="mkpi"></div>
   <div class="m-caption-plate">
-    <span class="figno">Fig. 0 — The facility, live</span>
+    <span class="figno">Interactive simulation</span>
     <span class="figtext">Watch what happens when a harvest moves: dry, trim, testing, packaging, and sales dates move with it. This working model follows eight batches from propagation planning through delivery. Drag to look around.</span>
   </div>
-</div></div>
-
-<!-- ============ PROBLEM + LOOP ============ -->
-<section class="paper problem-loop"><div class="shell">
-  <div class="sec-head"><span class="figno">The problem</span><h2>Every grow runs on two sets of books</h2><span class="side">field notes · recorded interviews and facility walks</span></div>
-  <p class="lede">Your plan lives in the schedule. Reality lives with the crew. When a harvest, room, or handoff changes, downstream teams usually learn too late. Cultivo closes that gap without asking growers to live in another system.</p>
-  <div class="quotes" style="margin-top:26px;">
-    <div class="q"><div class="qt">"Information moves through conversations, not systems."</div><div class="qa">Operator interview, licensed Arizona facility</div></div>
-  </div>
-  <p class="micro" style="font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.08em;margin-top:10px;">Quote from a recorded operator interview, 2026. Role kept anonymous.</p>
-  <div class="sec-head loop-head"><span class="figno">How it works</span><h2>Plan, capture, respond</h2><span class="side">one confirmed change updates the operation</span></div>
-  <div class="loop">
-    <div class="lp"><h3>Plan</h3><p>Build cycles against real room windows, mother capacity, day counts, and downstream constraints.</p></div>
-    <div class="arrow">→</div>
-    <div class="lp"><h3>Capture</h3><p>Record harvests, moves, weights, and waste at the door, on a phone, or by answering the agent. Completing the work is the log entry.</p></div>
-    <div class="arrow">→</div>
-    <div class="lp"><h3>Respond</h3><p>Update every affected room, handoff, capacity forecast, and sellable date—then use the completed cycle to improve the next plan.</p></div>
-  </div>
-  <div class="loop-return">↩ every completed cycle improves the next plan ↩</div>
-</div></section>
-
-<!-- ============ THE AGENT ============ -->
-<div class="agent-band" id="agent"><div class="shell">
-  <div class="sec-head"><span class="figno" style="color:var(--brass-lum)">The agent</span><h2>Keep the plan current without chasing updates</h2></div>
-  <div class="agent-grid">
-    <div>
-      <p class="lede">When something drifts, Cultivo asks the accountable person one plain question. After confirmation, it updates the affected dates, records who approved the change, and tells downstream teams what moved.</p>
-      <ul>
-        <li><b>It asks before it writes.</b> A person confirms every proposed change. Cultivo records the approval and never edits the operation silently.</li>
-        <li><b>It speaks the crew's language.</b> Harvest pushed two days? Clones cut this morning? Plants moved to veg? Answer in a sentence; Cultivo handles the update.</li>
-        <li><b>It surfaces conflicts without stopping work.</b> The crew keeps moving while Cultivo sends the right issue to the right person.</li>
-        <li><b>It works where the crew already talks.</b> Use Slack or WhatsApp without rolling out another floor application.</li>
-      </ul>
-      <div style="display:flex;align-items:center;gap:18px;margin-top:26px;">
-        <svg width="92" height="118" viewBox="0 0 92 118" fill="none" stroke="#C9A24B" stroke-width="1.6" aria-label="Otto, the Cultivo agent, drawn as a machine-age robot">
-          <line x1="46" y1="4" x2="46" y2="14"/><circle cx="46" cy="4" r="2.4" fill="#C9A24B" stroke="none"/>
-          <rect x="26" y="14" width="40" height="30" rx="7"/>
-          <circle cx="38" cy="28" r="3.6"/><circle cx="54" cy="28" r="3.6"/>
-          <line x1="34" y1="37" x2="58" y2="37"/>
-          <line x1="42" y1="44" x2="42" y2="50"/><line x1="50" y1="44" x2="50" y2="50"/>
-          <rect x="22" y="50" width="48" height="38" rx="4"/>
-          <circle cx="46" cy="66" r="9"/><line x1="46" y1="66" x2="51" y2="61"/>
-          <circle cx="27.5" cy="55" r="1.2" fill="#C9A24B" stroke="none"/><circle cx="64.5" cy="55" r="1.2" fill="#C9A24B" stroke="none"/>
-          <circle cx="27.5" cy="83" r="1.2" fill="#C9A24B" stroke="none"/><circle cx="64.5" cy="83" r="1.2" fill="#C9A24B" stroke="none"/>
-          <line x1="22" y1="58" x2="10" y2="70"/><line x1="10" y1="70" x2="10" y2="80"/>
-          <line x1="70" y1="58" x2="82" y2="70"/><rect x="78" y="70" width="8" height="12" rx="2"/>
-          <rect x="30" y="88" width="12" height="14"/><rect x="50" y="88" width="12" height="14"/>
-          <rect x="24" y="102" width="44" height="9" rx="4.5"/>
-          <circle cx="32" cy="106.5" r="2.2"/><circle cx="46" cy="106.5" r="2.2"/><circle cx="60" cy="106.5" r="2.2"/>
-        </svg>
-        <div>
-          <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--brass-lum);text-transform:uppercase;">Otto · unit 001</div>
-          <div style="font-size:13px;color:#B8BBB7;max-width:34ch;margin-top:4px;">Cultivo's operating agent, on duty since 2025. It sends morning briefs, asks for confirmation, and leaves compliance decisions with your team.</div>
-        </div>
-      </div>
-    </div>
-    <div class="slackmock">
-      <div class="sm-head"># direct message · 6:47 AM</div>
-      <div class="sm-msg">
-        <span class="ava"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C9A24B" stroke-width="1.5"><circle cx="12" cy="9" r="5"/><line x1="12" y1="1.5" x2="12" y2="4"/><circle cx="12" cy="1.5" r="1" fill="#C9A24B" stroke="none"/><rect x="7" y="14" width="10" height="7" rx="1"/><circle cx="10" cy="9" r="1" fill="#C9A24B" stroke="none"/><circle cx="14" cy="9" r="1" fill="#C9A24B" stroke="none"/></svg></span>
-        <div class="bd"><div class="nm">Cultivo Agent</div>
-        <div class="tx">Morning. Trichome check on <span class="mono">260420-DGW</span> says it wants 2 more days, so harvest is drifting past plan. Push harvest and ripple the downstream schedule?</div></div>
-      </div>
-      <div class="sm-actions"><span class="sm-chip on">Yes, push it</span><span class="sm-chip">Not yet</span></div>
-      <div class="sm-msg">
-        <span class="ava human">A</span>
-        <div class="bd"><div class="nm human">Andrew (Cultivation)</div><div class="tx">yes</div></div>
-      </div>
-      <div class="sm-receipt">✓ Harvest d105 → d107. Dry, trim, cure, test and packaging moved. Sales sees the new sellable date. Receipt #4187 on the ledger.</div>
-    </div>
-  </div>
-</div></div>
-
-<!-- ============ FIG 1 SCHEMATIC ============ -->
-<section class="paper" id="fig1"><div class="shell">
-  <div class="sec-head"><span class="figno">Fig. 1</span><h2>See where the operation connects</h2><span class="side">rooms · crews · downstream dependencies</span></div>
-  <div class="schewrap">
-    <svg viewBox="0 0 980 420" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,Menlo,monospace">
-      <defs>
-        <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-          <line x1="0" y1="0" x2="0" y2="7" stroke="#33444F" stroke-width="1"/>
-        </pattern>
-        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#C9A24B" stroke-width="1.6"/>
-        </marker>
-      </defs>
-      <!-- outer wall -->
-      <rect x="18" y="18" width="944" height="384" fill="none" stroke="#F4EFE4" stroke-width="2.5"/>
-      <rect x="26" y="26" width="928" height="368" fill="none" stroke="#33444F" stroke-width="1"/>
-      <!-- corridor -->
-      <rect x="40" y="188" width="900" height="44" fill="url(#hatch)" opacity=".35"/>
-      <text x="490" y="214" text-anchor="middle" font-size="10" letter-spacing="4" fill="#728087">CORRIDOR</text>
-      <!-- top row rooms -->
-      <g stroke="#F4EFE4" stroke-width="1.8" fill="#121D29">
-        <rect x="46"  y="44" width="90"  height="128"/>
-        <rect x="146" y="44" width="108" height="128"/>
-        <rect x="264" y="44" width="118" height="128"/>
-        <rect x="392" y="44" width="128" height="128"/>
-        <rect x="530" y="44" width="128" height="128"/>
-        <rect x="668" y="44" width="128" height="128"/>
-        <rect x="806" y="44" width="128" height="128"/>
-      </g>
-      <!-- bottom row rooms -->
-      <g stroke="#F4EFE4" stroke-width="1.8" fill="#121D29">
-        <rect x="806" y="248" width="128" height="128"/>
-        <rect x="668" y="248" width="128" height="128"/>
-        <rect x="530" y="248" width="128" height="128"/>
-        <rect x="392" y="248" width="128" height="128"/>
-        <rect x="254" y="248" width="128" height="128"/>
-        <rect x="86"  y="248" width="158" height="128"/>
-      </g>
-      <!-- room labels -->
-      <g font-size="11" fill="#F4EFE4" text-anchor="middle" font-weight="bold" letter-spacing="1">
-        <text x="91"  y="102">PLAN</text>
-        <text x="200" y="102">MOTHERS</text>
-        <text x="323" y="102">CLONE</text>
-        <text x="456" y="102">VEG</text>
-        <text x="594" y="102">FLOWER 01</text>
-        <text x="732" y="102">FLOWER 02</text>
-        <text x="870" y="102">FLOWER 03</text>
-        <text x="870" y="306">DRY</text>
-        <text x="732" y="306">BUCK+TRIM</text>
-        <text x="594" y="306">CURE</text>
-        <text x="456" y="306">TEST VAULT</text>
-        <text x="318" y="306">PACKAGING</text>
-        <text x="165" y="306">DISPATCH</text>
-      </g>
-      <!-- sub labels -->
-      <g font-size="8.5" fill="#728087" text-anchor="middle" letter-spacing="1">
-        <text x="91"  y="118">PLANNER</text>
-        <text x="200" y="118">STOCK PLANTS</text>
-        <text x="323" y="118">PROPAGATION</text>
-        <text x="456" y="118">14–42 DAYS</text>
-        <text x="594" y="118">63 DAYS</text>
-        <text x="732" y="118">63 DAYS</text>
-        <text x="870" y="118">63 DAYS</text>
-        <text x="870" y="322">10 DAYS</text>
-        <text x="732" y="322">5 DAYS</text>
-        <text x="594" y="322">14 DAYS</text>
-        <text x="456" y="322">COA · 14 DAYS</text>
-        <text x="318" y="322">JARS · MYLAR</text>
-        <text x="165" y="322">5–7 DAY SLA</text>
-      </g>
-      <!-- flow arrows top -->
-      <g stroke="#C9A24B" stroke-width="1.6" fill="none">
-        <line x1="136" y1="108" x2="144" y2="108" marker-end="url(#arr)"/>
-        <line x1="254" y1="108" x2="262" y2="108" marker-end="url(#arr)"/>
-        <line x1="382" y1="108" x2="390" y2="108" marker-end="url(#arr)"/>
-        <line x1="520" y1="108" x2="528" y2="108" marker-end="url(#arr)"/>
-        <line x1="658" y1="108" x2="666" y2="108" marker-end="url(#arr)"/>
-        <line x1="796" y1="108" x2="804" y2="108" marker-end="url(#arr)"/>
-        <!-- down to dry -->
-        <path d="M 870 172 L 870 246" marker-end="url(#arr)"/>
-        <!-- bottom row right-to-left -->
-        <line x1="806" y1="312" x2="798" y2="312" marker-end="url(#arr)"/>
-        <line x1="668" y1="312" x2="660" y2="312" marker-end="url(#arr)"/>
-        <line x1="530" y1="312" x2="522" y2="312" marker-end="url(#arr)"/>
-        <line x1="392" y1="312" x2="384" y2="312" marker-end="url(#arr)"/>
-        <line x1="254" y1="312" x2="246" y2="312" marker-end="url(#arr)"/>
-        <!-- out the door -->
-        <path d="M 86 312 L 44 312" marker-end="url(#arr)" stroke-dasharray="4 4"/>
-      </g>
-      <!-- numbered callouts -->
-      <g font-size="10.5" font-weight="bold">
-        <g fill="#121D29" stroke="#C9A24B" stroke-width="1.6">
-          <circle cx="56" cy="56" r="9"/><circle cx="156" cy="56" r="9"/><circle cx="274" cy="56" r="9"/><circle cx="402" cy="56" r="9"/>
-          <circle cx="540" cy="56" r="9"/><circle cx="816" cy="260" r="9"/><circle cx="678" cy="260" r="9"/>
-          <circle cx="540" cy="260" r="9"/><circle cx="402" cy="260" r="9"/><circle cx="264" cy="260" r="9"/><circle cx="96" cy="260" r="9"/>
-        </g>
-        <g fill="#C9A24B" text-anchor="middle">
-          <text x="56" y="60">1</text><text x="156" y="60">2</text><text x="274" y="60">3</text><text x="402" y="60">4</text>
-          <text x="540" y="60">5</text><text x="816" y="264">6</text><text x="678" y="264">7</text>
-          <text x="540" y="264">8</text><text x="402" y="264">9</text><text x="264" y="264">10</text><text x="96" y="264">11</text>
-        </g>
-      </g>
-      <!-- title block -->
-      <g>
-        <rect x="694" y="380" width="260" height="20" fill="#182735" stroke="#F4EFE4" stroke-width="1.5"/>
-        <text x="704" y="394" font-size="8.5" letter-spacing="1.4" fill="#F4EFE4">CULTIVO MK.I · FACILITY SCHEMATIC</text>
-      </g>
-    </svg>
-  </div>
-  <details class="facility-detail">
-    <summary>See Cultivo's coverage, station by station</summary>
-  <table class="legend">
-    <tr><th style="width:36px">№</th><th>Station</th><th>Crew</th><th>What the agent watches</th><th style="width:110px">Service status</th></tr>
-    <tr><td class="no">1</td><td><b>Production Planner</b></td><td class="crew">Cultivation Mgr · Owner</td><td>Demand vs room windows, mother allocation, every delay's ripple through the schedule</td><td><span class="wbadge w-live">in service</span></td></tr>
-    <tr><td class="no">2</td><td><b>Mother room</b></td><td class="crew">Cultivation Mgr</td><td>Mother health and true cut capacity; audits availability 5 days before every required cut</td><td><span class="wbadge w-live">in service</span></td></tr>
-    <tr><td class="no">3</td><td><b>Clone / propagation</b></td><td class="crew">Cult Tech</td><td>Guided intake by chat: every cut becomes a permanent record the moment it happens</td><td><span class="wbadge w-build">on the bench</span></td></tr>
-    <tr><td class="no">4</td><td><b>Veg</b></td><td class="crew">Cult Tech</td><td>Transplants and culls captured by conversation; no more mystery plants</td><td><span class="wbadge w-soon">tooling up</span></td></tr>
-    <tr><td class="no">5</td><td><b>Flower 01–03</b></td><td class="crew">Cult Tech · Cult Mgr</td><td>Stale stages, overdue rooms, feed and IPM rhythm, labor collisions on the calendar</td><td><span class="wbadge w-live">in service</span></td></tr>
-    <tr><td class="no">6</td><td><b>Dry</b></td><td class="crew">Post-Production Mgr</td><td>The cultivation-to-post-production handoff; dry-line conflicts before they happen</td><td><span class="wbadge w-live">in service</span></td></tr>
-    <tr><td class="no">7</td><td><b>Buck + trim</b></td><td class="crew">Prod Techs · PP Mgr</td><td>Reserve, work, weigh, finalize; conversion by strain by operator feeds the outcome ledger</td><td><span class="wbadge w-live">in service</span></td></tr>
-    <tr><td class="no">8</td><td><b>Cure</b></td><td class="crew">Post-Production Mgr</td><td>Cure timing and conditions against spec</td><td><span class="wbadge w-soon">tooling up</span></td></tr>
-    <tr><td class="no">9</td><td><b>Test vault</b></td><td class="crew">Post-Production Mgr</td><td>Sample custody, COA status, potency answers in plain language</td><td><span class="wbadge w-live">in service</span></td></tr>
-    <tr><td class="no">10</td><td><b>Packaging</b></td><td class="crew">Prod Techs</td><td>Formats, labels at completion, jurisdiction label rules, misclick-proof submits</td><td><span class="wbadge w-live">in service</span></td></tr>
-    <tr><td class="no">11</td><td><b>Dispatch</b></td><td class="crew">PP Mgr · Sales</td><td>Order pipeline risk, the 5-to-7-day promise, manifests, invoices, COAs out the door</td><td><span class="wbadge w-live">in service</span></td></tr>
-  </table>
-  </details>
-</div></section>
-
-<!-- ============ MODULES ============ -->
-<section class="paper" id="modules" style="padding-top:0;"><div class="shell">
-  <div class="sec-head"><span class="figno">The system</span><h2>One operating system, configured for your facility</h2><span class="side">core platform · practical modules</span></div>
-  <p class="lede">Start with the Production Planner, agent, and operating record. Configure Cultivo around your rooms, day counts, strains, labels, language, and the channels your crew already uses.</p>
-  <div class="bento" style="margin-top:26px;">
-    <div class="mod wide"><div class="mh"><h3>Production Planner</h3><span class="mtag core">Core</span></div><p>Plan cycles against real room windows, mother capacity, and downstream constraints. When work moves, see every affected date and conflict before committing the change.</p><div class="mfoot">A current plan your operation can use</div></div>
-    <div class="mod"><div class="mh"><h3>The Agent</h3><span class="mtag core">Core</span></div><p>Collect floor updates and send morning briefs in Slack or WhatsApp. Every change is confirmed by a person and recorded.</p><div class="mfoot">Updates without another floor app</div></div>
-    <div class="mod"><div class="mh"><h3>Inventory Ledger</h3><span class="mtag core">Core</span></div><p>Maintain seed-to-sale chain of custody with mass-balance checks and evidence behind every stage change.</p><div class="mfoot">Audit-ready by construction</div></div>
-    <div class="mod"><div class="mh"><h3>Floor Capture</h3><span class="mtag">Module</span></div><p>Capture propagation, waste, testing custody, and physical handoffs at the moment the work happens.</p><div class="mfoot">A complete record from the floor</div></div>
-    <div class="mod"><div class="mh"><h3>Labor + Handoffs</h3><span class="mtag">Module</span></div><p>See when harvest, defoliation, transplant, and post-production will compete for the same people and capacity.</p><div class="mfoot">Find bottlenecks before the crew does</div></div>
-    <div class="mod wide"><div class="mh"><h3>Owner's Ledger</h3><span class="mtag">Module</span></div><p>Track cost per gram, labor per batch, throughput per week, and plan-versus-actual revenue timing from the same operating record.</p><div class="mfoot">A current view of operating performance</div></div>
-  </div>
-</div></section>
-
-<!-- ============ PROOF ============ -->
-<div class="proof-band" id="planner"><div class="shell">
-  <div class="sec-head" style="border-color:var(--wire);"><span class="figno" style="color:var(--brass-lum)">Field record</span><h2 style="color:var(--lum)">From scattered updates to one complete operating record</h2></div>
-  <div class="planner-proof-frame">
-    <span class="m-corner tl"></span><span class="m-corner tr"></span><span class="m-corner bl"></span><span class="m-corner br"></span>
-    <img class="planner-shot planner-shot--light" src="assets/planner-schedule-live.jpg" alt="The current Cultivo Production Planner schedule showing 32 seeded cycles across propagation, veg, flower, and dry rooms, with live capacity and conflict indicators">
-  </div>
-  <div class="m-caption-plate" style="margin-bottom:34px;">
-    <span class="figno">Fig. 2 — Production Planner · seeded schedule</span>
-    <span class="figtext">See 32 cycles across propagation, veg, flower, and dry in one current schedule. The planner surfaces room conflicts, clone demand, upcoming flips and harvests, and the exact weeks where capacity collides. Seeded demo data; no customer record is shown.</span>
-  </div>
-  <div class="case-shift">
-    <article><span>Before Cultivo</span><h3>The plan and the floor told different stories</h3><p>Schedules, crew conversations, and compliance records described the same facility differently. Every delay required someone to reconstruct what changed and who needed to know.</p></article>
-    <div class="case-arrow" aria-hidden="true">→</div>
-    <article class="case-after"><span>Recorded result</span><h3>One complete record from planning through compliance</h3><p>Across 16 months, Cultivo tracked 200+ batches and 117 strains, then exported 50,316 clean ledger rows for compliance on the first pass.</p></article>
-  </div>
-  <p class="proof-line">The Production Planner is now in pilot at a Canadian research facility with a cultivation-science consultancy.</p>
 </div></div>
 
 <!-- ============ PILOT ============ -->
@@ -356,7 +165,7 @@
       </div>
     </div>
     <form class="walkthrough-form" id="walkthroughForm">
-      <span class="form-kicker">Book a fit check</span>
+      <span class="form-kicker">Email a fit-check request</span>
       <h3>Show us where the plan loses contact with the floor.</h3>
       <label>Your name<input id="leadName" name="name" autocomplete="name" required></label>
       <label>Work email<input id="leadEmail" name="email" type="email" autocomplete="email" required></label>
@@ -370,8 +179,8 @@
           <option>I need help finding the gap</option>
         </select>
       </label>
-      <button class="cta" type="submit">Request a 20-minute fit check</button>
-      <p class="form-note">You will email Justin directly. No mailing list and no automated follow-up.</p>
+      <button class="cta" type="submit">Open email draft</button>
+      <p class="form-note">Opens your email app with a draft to Justin. Send it from your email app to request a 20-minute fit check. No mailing list and no automated follow-up.</p>
       <p class="form-status" id="walkthroughStatus" aria-live="polite"></p>
     </form>
   </div>
@@ -383,7 +192,7 @@
     <span class="cultivo-wordmark">CULTIVO</span>
   </a>
   <span class="fnote">Built by Praxis · gopraxis.ai</span>
-  <span class="right"><a href="https://app.cultivo.ag" style="color:inherit;">Operator log in</a> · Fig. 0 is a working model of the live system · © 2026</span>
+  <span class="right"><a href="https://app.cultivo.ag" style="color:inherit;">Operator log in</a> · Interactive simulation, not a live facility feed · © 2026</span>
 </div></footer>
 
 <script src="app.js"></script>
