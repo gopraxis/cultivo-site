@@ -341,7 +341,7 @@ const CHAPTERS={
   setup(){const i=Math.max(1,Math.round((day-(HARVEST_D-4))/SPAWN_EVERY));story.target=i;delete DELAYS[i];
    day=i*SPAWN_EVERY+HARVEST_D-6;focusBatch=i;speed=2;},
   beats:[
-   {enter(){camReset();caption('THE FACILITY, LIVE',`${batchesAt(day).length} batches in flight on one closed loop. Clone ${S.clone}, veg ${S.veg}, flower ${S.flower}, dry ${S.dry}, cure ${S.cure}, test ${S.test}. Watch one cycle meet reality.`);},
+   {enter(){camReset();caption('THE FACILITY MODEL',`${batchesAt(day).length} batches in flight on one closed loop. Clone ${S.clone}, veg ${S.veg}, flower ${S.flower}, dry ${S.dry}, cure ${S.cure}, test ${S.test}. Watch one cycle meet reality.`);},
     tick(el){if(el>6200)nextBeat();}},
    {enter(){const b=targetBatch();if(!b)return chapterEnd();camFocus(b.flw,1.5);speed=1.6;
      caption(`DAY ${Math.floor(day-b.spawn)} FOR ${b.code}`,`${b.strain} is finishing flower. The plan says harvest in ${Math.max(1,Math.round(HARVEST_D-(day-b.spawn)))} days. The grower has not opened a computer this week, and will not need to.`);},
@@ -454,7 +454,7 @@ function frame(now){const dt=Math.min(0.1,(now-lastT)/1000);lastT=now;
  if(now-kpiTick>400){kpiTick=now;renderKPI(bs);}
  requestAnimationFrame(frame);}
 resize();
-pushEv('Cultivo',`model live: ${CFG.label.toLowerCase()} · ${SPAWN_EVERY}-day cadence · one closed loop`);
+pushEv('Cultivo',`simulation: ${CFG.label.toLowerCase()} · ${SPAWN_EVERY}-day cadence · one closed loop`);
 requestAnimationFrame(n=>{lastT=n;frame(n);});
 })();
 
